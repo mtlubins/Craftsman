@@ -1,8 +1,8 @@
 export class AuthConfig {
 
-    globalHeaders: Array<Object>;
+    public globalHeaders: Array<Object>;
 
-    constructor(config?) {
-        this.globalHeaders = config.globalHeaders || [{'Content-Type': 'application/json'}];
+    constructor() {
+        this.globalHeaders = [{'Content-Type': 'application/json'}];
     }
 }
