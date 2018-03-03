@@ -1,16 +1,15 @@
-import {AbstractHttpService} from './http-service.abstract';
+import {HttpServiceInterface} from './http-service.interface';
 import {Observable} from 'rxjs/Observable';
 import {HttpResponse, HttpClient, HttpHeaders} from '@angular/common/http';
 import {AuthConfig} from './auth-config.model';
 import {Injectable} from '@angular/core';
 
 @Injectable()
-export class BaseHttpService extends AbstractHttpService {
+export class BaseHttpService implements HttpServiceInterface {
 
     protected config: AuthConfig;
 
     constructor(protected httpClient: HttpClient) {
-        super();
         this.config = new AuthConfig();
     }
 

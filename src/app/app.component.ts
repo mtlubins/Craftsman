@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {Environment} from './api.environment';
+import {CraftsmenResourceService} from './rest/resources/craftsmen-resource.service';
 
 @Component({
   selector: 'app-root',
@@ -7,9 +7,17 @@ import {Environment} from './api.environment';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent implements OnInit {
+  constructor(private craftsmenService: CraftsmenResourceService) {}
   title = 'app';
   ngOnInit() {
-    // let env = new Environment();
-    // let envGet: string = env.apiPath();
+    this.craftsmenService.getCraftsmen()
+      .subscribe(
+        (response) => {
+          console.log(response);
+        },
+        (err) => {
+          console.log(err);
+        }
+      );
   }
 }
