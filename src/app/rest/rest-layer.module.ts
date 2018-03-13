@@ -1,24 +1,30 @@
 import {NgModule} from '@angular/core';
 import {HttpClientModule} from '@angular/common/http';
 import {BaseHttpService} from './http/base-http.service';
-import {CraftsmenResourceService} from './resources/craftsmen-resource.service';
+import {CraftsmenResourceService} from './resources/craftsmen-resource/craftsmen-resource.service';
+import {AuthService} from './auth/auth.service';
+import {SharedModule} from '../shared/shared.module';
 
 const MAIN_RESOURCES = [
   {
     provide: BaseHttpService, useClass: BaseHttpService
   },
+  // {
+  //   provide: CraftsmenResourceService, deps: [BaseHttpService],
+  //   useFactory(http: BaseHttpService) {
+  //     return new CraftsmenResourceService(http);
+  //   }
+  // }, due to use factory i can create services dynamically - have to be same interface
   {
-    provide: CraftsmenResourceService, deps: [BaseHttpService],
-    useFactory(http: BaseHttpService) {
-      return new CraftsmenResourceService(http);
-    }
+    provide: CraftsmenResourceService, useClass: CraftsmenResourceService
   },
 ];
 
 @NgModule({
-  imports: [HttpClientModule],
+  imports: [HttpClientModule, SharedModule],
   providers: [
-    ...MAIN_RESOURCES
+    ...MAIN_RESOURCES,
+    AuthService
   ],
 })
 export class RestLayerModule {}
