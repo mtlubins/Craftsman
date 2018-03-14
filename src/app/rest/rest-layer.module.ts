@@ -4,6 +4,7 @@ import {BaseHttpService} from './http/base-http.service';
 import {CraftsmenResourceService} from './resources/craftsmen-resource/craftsmen-resource.service';
 import {AuthService} from './auth/auth.service';
 import {SharedModule} from '../shared/shared.module';
+import {CraftsmenResolverService} from './resources/craftsmen-resource/craftsmen-resolver.service';
 
 const MAIN_RESOURCES = [
   {
@@ -24,7 +25,8 @@ const MAIN_RESOURCES = [
   imports: [HttpClientModule, SharedModule],
   providers: [
     ...MAIN_RESOURCES,
-    AuthService
+    AuthService,
+    CraftsmenResolverService
   ],
 })
 export class RestLayerModule {}
