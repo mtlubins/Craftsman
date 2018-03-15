@@ -8,5 +8,6 @@ export const environment = {
   API_PATH: 'http://localhost:3000',
   CRAFTSMEN_PATH: '/craftsmen',
   LOGIN_PATH: '/auth/login',
+  PROFILE_PATH: '/me',
   ERROR_PATH: '/auth/error'
 };

@@ -6,6 +6,7 @@ import {RestLayerModule} from './rest/rest-layer.module';
 import {SharedModule} from './shared/shared.module';
 import {RouterModule} from '@angular/router';
 import {AppRouterModule} from './app.routing';
+import {UserAccountModule} from './my-account/user-account.module';
 
 
 @NgModule({
@@ -19,7 +20,8 @@ import {AppRouterModule} from './app.routing';
     RouterModule,
 
     RestLayerModule,
-    SharedModule
+    SharedModule,
+    UserAccountModule
   ],
   providers: [],
   bootstrap: [AppComponent]

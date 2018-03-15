@@ -10,13 +10,14 @@ import {IHttpError} from '../../rest/http/http-error.interface';
 })
 export class CraftsmenListComponent implements OnInit {
 
-  public craftsmen: ICraftsman[] | IHttpError;
+  public craftsmen: ICraftsman[];
 
-  constructor(private route: ActivatedRoute) {}
+  constructor(private craftsmenService: CraftsmenResourceService) {}
 
   ngOnInit() {
-    const resolvedData: ICraftsman[] | IHttpError = this.route.snapshot.data['resolvedCraftsmen'];
-    console.log(resolvedData);
-    this.craftsmen = resolvedData;
+    this.craftsmenService.getCraftsmen()
+      .subscribe((response) => {
+        this.craftsmen = response;
+      }, (err: IHttpError) => console.log(err.userMessage));
   }
 }

@@ -11,7 +11,7 @@ export class BaseHttpService implements IHttpService {
 
     protected config: AuthConfig;
 
-  static handleHttpError(error: HttpErrorResponse): Observable<IHttpError> {
+  static handleHttpError(error: HttpErrorResponse): Observable<any> {
     const dataError: IHttpError = {
       status: error.status,
       message: error.message,

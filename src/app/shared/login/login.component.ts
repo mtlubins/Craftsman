@@ -3,6 +3,7 @@ import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {AuthService} from '../../rest/auth/auth.service';
 import {IAccessToken} from '../../rest/auth/access-token.interface';
 import {IHttpError} from '../../rest/http/http-error.interface';
+import {JwtStorageService} from '../storage/jwt-storage.service';
 
 @Component({
   selector: 'app-login',
@@ -11,9 +12,11 @@ import {IHttpError} from '../../rest/http/http-error.interface';
 })
 export class LoginComponent implements OnInit {
   loginForm: FormGroup;
+  public token: any;
 
   constructor(private fb: FormBuilder,
-              private authService: AuthService) {}
+              private authService: AuthService,
+              private jwtService: JwtStorageService) {}
 
   ngOnInit() {
     this.buildForm();
@@ -27,8 +30,8 @@ export class LoginComponent implements OnInit {
     console.log(loginData);
     this.authService.login(loginData)
       .subscribe(
-        (response) => {
-        console.log(response);
+        (response: IAccessToken) => {
+          this.token = this.jwtService.getToken();
       },
       (err: IHttpError) => {
             console.log(err.userMessage);

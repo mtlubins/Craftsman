@@ -1,10 +1,10 @@
 import {NgModule} from '@angular/core';
-import {HttpClientModule} from '@angular/common/http';
+import {HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
 import {BaseHttpService} from './http/base-http.service';
 import {CraftsmenResourceService} from './resources/craftsmen-resource/craftsmen-resource.service';
 import {AuthService} from './auth/auth.service';
 import {SharedModule} from '../shared/shared.module';
-import {CraftsmenResolverService} from './resources/craftsmen-resource/craftsmen-resolver.service';
+import {AccessTokenInterceptor} from './auth/access-token.interceptor';
 
 const MAIN_RESOURCES = [
   {
@@ -26,7 +26,7 @@ const MAIN_RESOURCES = [
   providers: [
     ...MAIN_RESOURCES,
     AuthService,
-    CraftsmenResolverService
+    {provide: HTTP_INTERCEPTORS, useClass: AccessTokenInterceptor, multi: true}
   ],
 })
 export class RestLayerModule {}

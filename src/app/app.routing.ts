@@ -1,7 +1,10 @@
 import {RouterModule, Routes} from '@angular/router';
 import {LoginComponent} from './shared/login/login.component';
 import {CraftsmenListComponent} from './shared/craftsmen-list/craftsmen-list.component';
-import {CraftsmenResolverService} from './rest/resources/craftsmen-resource/craftsmen-resolver.service';
+
+import {UserProfileComponent} from './my-account/user-profile/component/user-profile.component';
+import {UserProfileResolver} from './my-account/user-profile/service/user-profile.resolver';
+import {ErrorOccurredComponent} from './shared/error-occurred/error-occurred.component';
 
 const APP_ROUTES: Routes = [
   {
@@ -10,8 +13,16 @@ const APP_ROUTES: Routes = [
   },
   {
     path: 'craftsmen',
-    component: CraftsmenListComponent,
-    resolve: {resolvedCraftsmen: CraftsmenResolverService}
+    component: CraftsmenListComponent
+  },
+  {
+    path: 'my-account',
+    component: UserProfileComponent,
+    resolve: {resolvedProfileData: UserProfileResolver}
+  },
+  {
+    path: 'error-occurred',
+    component: ErrorOccurredComponent
   }
 ];
 
