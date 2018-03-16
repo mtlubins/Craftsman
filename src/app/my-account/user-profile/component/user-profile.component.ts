@@ -12,5 +12,6 @@ export class UserProfileComponent implements OnInit {
 
   ngOnInit() {
     this.userData = this.route.snapshot.data['resolvedProfileData'];
+    console.log(this.userData);
   }
 }

@@ -1,2 +1,5 @@
 My-Profile works!
-{{userData}}
+<div *ngFor="let entry of userData | displayObj ">
+  {{entry.key}} {{entry.value}}
+</div>
+

@@ -8,11 +8,12 @@ import {JwtStorageService} from './storage/jwt-storage.service';
 import {HeaderComponent} from './header/header.component';
 import {RouterModule} from '@angular/router';
 import {ErrorOccurredComponent} from './error-occurred/error-occurred.component';
+import {PipeDisplayObjects} from './pipes/display-objects.pipe';
 
 @NgModule({
   imports: [RouterModule, CommonModule, ReactiveFormsModule],
-  declarations : [LoginComponent, CraftsmenListComponent, HeaderComponent, ErrorOccurredComponent],
-  exports: [LoginComponent, CraftsmenListComponent, HeaderComponent, ErrorOccurredComponent],
+  declarations : [LoginComponent, CraftsmenListComponent, HeaderComponent, ErrorOccurredComponent, PipeDisplayObjects],
+  exports: [LoginComponent, CraftsmenListComponent, HeaderComponent, ErrorOccurredComponent, PipeDisplayObjects],
   providers: [LocaleStorageService, JwtStorageService]
 })
 export class SharedModule {
