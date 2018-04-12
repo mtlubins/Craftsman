@@ -1,0 +1,25 @@
+@import './mixins';
+@import './variables';
+.button-transparent-white {
+  $transparent-white: (
+    normal-state: (background-color: transparent, border-color: white, color: white),
+    hover: (background-color: white, border-color: white, color: black)
+  );
+  @include button($transparent-white...);
+}
+
+.button-white-transparent {
+  $white-transparent: (
+    normal-state: (background-color: white, border: $button-border-size solid white, color: black),
+    hover: (background-color: transparent, border: $button-border-size solid white, color: white)
+  );
+  @include button($white-transparent...);
+}
+
+.button-yellow-white {
+  $white-yellow: (
+    normal-state: (background-color: $dirty-yellow, border: $button-border-size solid $dirty-yellow, color: white),
+    hover: (background-color: white, border: $button-border-size solid $dirty-yellow, color: $dirty-yellow)
+  );
+  @include button($white-yellow...);
+}

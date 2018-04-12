@@ -1,0 +1,35 @@
+@import './variables';
+@mixin button($normal-state: (), $hover: ()) {
+  $normal-default-values: (background-color: white, color: black, text-decoration: none,
+    min-width: 180px, min-height: 45px, cursor: pointer, font-family: $font-open-sans, font-size: $font-button-size,
+    border: 2px solid white);
+  $hover-default-values: (background-color: black, color: white, text-decoration: none);
+
+  $normal-state-map: map_merge($normal-default-values, $normal-state);
+  $hover-map: map-merge($hover-default-values, $hover);
+
+  @include transitions('background-color, color');
+
+  &, &:visited {
+    @each $key in map_keys($normal-state-map) {
+      #{$key}: map_get($normal-state-map, $key);
+    }
+  }
+
+  &:hover {
+    @each $key in map-keys($hover-map) {
+      #{$key}: map-get($hover-map, $key);
+    }
+  }
+
+  &:focus, &active {
+    outline: none;
+  }
+}
+
+@mixin transitions($value) {
+  -webkit-transition: unquote($value) $transition-time-desktop;
+  -moz-transition: unquote($value) $transition-time-desktop;
+  -o-transition: unquote($value) $transition-time-desktop;
+  transition: unquote($value) $transition-time-desktop;
+}

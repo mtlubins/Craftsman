@@ -1,17 +1,20 @@
-<form [formGroup]="loginForm">
-  <div class="form-group">
-    <label class="form-login-label" for="login">Login</label>
-    <input type="text" id="login" class="form-control form-control-ext rounded-0"
-           formControlName="login" placeholder="E-mail or user name...">
-    <!--<mp-field-validator [errors]="login.errors" [ctrl]="login"></mp-field-validator>-->
-  </div>
+<div class="container">
+  <form [formGroup]="loginForm">
+    <div class="form-group">
+      <label class="form-login-label" for="login">Login</label>
+      <input type="text" id="login" class="form-control form-control-ext rounded-0"
+             formControlName="login" placeholder="E-mail or user name...">
+      <!--<mp-field-validator [errors]="login.errors" [ctrl]="login"></mp-field-validator>-->
+    </div>
 
-  <div class="form-group">
-    <label class="form-login-label" for="password">Password</label>
-    <input type="password" class="form-control form-control-ext rounded-0" id="password"
-           formControlName="password" placeholder="Password">
-    <!--<mp-field-validator [errors]="password.errors" [ctrl]="password"></mp-field-validator>-->
-  </div>
-  <button (click)="logIn()" class="btn">Login</button>
-  <div>{{token}}</div>
-</form>
+    <div class="form-group">
+      <label class="form-login-label" for="password">Password</label>
+      <input type="password" class="form-control form-control-ext rounded-0" id="password"
+             formControlName="password" placeholder="Password">
+      <!--<mp-field-validator [errors]="password.errors" [ctrl]="password"></mp-field-validator>-->
+
+    </div>
+    <button (click)="logIn()" class="button-yellow-white">Login</button>
+    <div>{{token}}</div>
+  </form>
+</div>

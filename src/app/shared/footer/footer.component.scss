@@ -1,0 +1,24 @@
+@import '../../../assets/styles/variables';
+
+.footer-container {
+  min-height: 300px;
+  background-color: $nav-brown;
+  position: relative;
+  color: white;
+
+}
+
+.photo-layer {
+  background: url('../../../assets/images/footer_image.png');
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+  //display: flex;
+  //justify-content: center;
+  //flex-direction: column;
+  //text-align: center;
+
