@@ -1,0 +1,120 @@
+@import './variables';
+@import './mixins';
+
+.form-group-ext {
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: auto;
+  padding-right: auto;
+  width: 260px;
+
+  @include respondFromTo($device-xs, $device-sm) {
+    width: 100%;
+  }
+  @include respondFromTo($device-md, $device-xxxl) {
+    width: 500px;
+  }
+
+  .margin-top {
+    margin-top: 50px;
+  }
+
+  label{
+    margin-bottom: 30px;
+  }
+
+  .form-control {
+    &:focus, &:active, &:hover {
+      border-color: $black!important;;
+      color: $black!important;
+      // box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(255, 0, 0, 0.6);
+      box-shadow: none;
+    }
+  }
+}
+
+.form-control-ext {
+  border-radius: 0;
+  border-color: $black;
+  margin-top: 10px;
+  font-size: $font-common-size;
+  font-family: $font-open-sans;
+  width: 260px;
+  height: 50px;
+  background-color: $white;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: auto;
+  padding-right: auto;
+  font-weight: normal;
+
+  @include respondFromTo($device-xs, $device-sm) {
+    width: 100%;
+  }
+  @include respondFromTo($device-md, $device-xxxl) {
+    width: 500px;
+  }
+  &:focus, &:active, &:hover {
+    border-color: $black!important;
+    color: $black!important;
+  }
+}
+
+.form-label-ext {
+  font-family: $font-open-sans;
+  font-size: $font-common-size;
+  text-align: left;
+  color: $black;
+  font-weight: 500;
+  margin-bottom: 0;
+}
+/* The container */
+.checkbox-container {
+  display: block;
+  position: relative;
+  cursor: pointer;
+  font-size: 22px;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  /* Hide the browser's default checkbox */
+  input {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+  }
+  /* Create a custom checkbox */
+  .checkmark {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 25px;
+    width: 25px;
+    background-color: $white;
+    border: 1px solid $black;
+    margin-bottom: 20px;
+  }
+  /* Create the checkmark/indicator (hidden when not checked) */
+  .checkmark:after {
+    content: "";
+    position: absolute;
+    display: none;
+  }
+  /* Show the checkmark when checked */
+  input:checked ~ .checkmark:after {
+    display: block;
+  }
+  /* Style the checkmark/indicator */
+  .checkmark:after {
+    left: 9px;
+    top: 3px;
+    width: 6px;
+    height: 15px;
+    border: solid $dirty-yellow;
+    border-width: 0 2px 2px 0;
+    -webkit-transform: rotate(45deg);
+    -ms-transform: rotate(45deg);
+    transform: rotate(45deg);
+  }
+}

@@ -8,7 +8,7 @@
   $normal-state-map: map_merge($normal-default-values, $normal-state);
   $hover-map: map-merge($hover-default-values, $hover);
 
-  @include transitions('background-color, color');
+  @include transitions('background, color');
 
   &, &:visited {
     @each $key in map_keys($normal-state-map) {
@@ -22,14 +22,48 @@
     }
   }
 
-  &:focus, &active {
+  &:focus, &:active {
     outline: none;
   }
 }
 
 @mixin transitions($value) {
-  -webkit-transition: unquote($value) $transition-time-desktop;
-  -moz-transition: unquote($value) $transition-time-desktop;
-  -o-transition: unquote($value) $transition-time-desktop;
-  transition: unquote($value) $transition-time-desktop;
+  //unquote($value);
+  //$prefixes: (webkit, moz, ms, o);
+  //@each $prefix in $prefixes {
+  //  #{'-' + $prefix + '-' + transition}: $value $transition-time-desktop;
+  //}
+  -webkit-transition: all $transition-time-desktop;
+  -moz-transition: all $transition-time-desktop;
+  -o-transition: all $transition-time-desktop;
+  transition: all $transition-time-desktop;
+
 }
+
+@mixin respondTo($media) {
+  @include respondFromTo($media) {
+    @content;
+  };
+}
+
+@mixin respondFromTo($deviceFrom, $deviceTo: null) {
+  $start: map-get($deviceFrom, start);
+  $end: $infinity;
+
+  @if ($deviceTo) {
+    $end: map-get($deviceTo, end);
+  } @else {
+    $end: map-get($deviceFrom, end);
+  }
+
+  @if $end == $infinity {
+    @media (min-width: $start) {
+      @content;
+    }
+  } @else {
+    @media (min-width: $start) and (max-width: $end) {
+      @content;
+    }
+  }
+}
+

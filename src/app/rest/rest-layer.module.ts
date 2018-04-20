@@ -7,9 +7,7 @@ import {SharedModule} from '../shared/shared.module';
 import {AccessTokenInterceptor} from './auth/access-token.interceptor';
 
 const MAIN_RESOURCES = [
-  {
-    provide: BaseHttpService, useClass: BaseHttpService
-  },
+  BaseHttpService,
   // {
   //   provide: CraftsmenResourceService, deps: [BaseHttpService],
   //   useFactory(http: BaseHttpService) {

@@ -1,0 +1,42 @@
+@import '../../../assets/styles/variables';
+@import '../../../assets/styles/forms';
+@import '../../../assets/styles/mixins';
+
+.registration-container {
+  a {
+    color: $dirty-yellow;
+  }
+  display: flex;
+  flex-flow: column;
+  font-family: $font-open-sans;
+  margin-bottom: 50px;
+
+  .registration-headers {
+    text-align: center;
+    .join-us-header {
+      font-size: $font-main-headers;
+      padding: 40px 0;
+    }
+    .yellow-header {
+      color: $dirty-yellow;
+      font-size: $font-semi-headers;
+    }
+  }
+  .button-yellow-white {
+    $white-yellow: (
+      normal-state: (background-color: $dirty-yellow, border: $button-border-size solid $dirty-yellow, color: white, min-width: 220px, margin-top: 30px),
+      hover: (background-color: white, border: $button-border-size solid $dirty-yellow, color: $dirty-yellow)
+    );
+    @include button($white-yellow...);
+  }
+
+  .account-question {
+    margin-left: 20px;
+  }
+  .private-policy {
+    margin-left: 35px;
+  }
+  .checkbox-container {
+    margin-top: -20px;
+  }
+}
