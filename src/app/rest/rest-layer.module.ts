@@ -8,9 +8,7 @@ import {AccessTokenInterceptor} from './auth/access-token.interceptor';
 import {RefreshTokenInterceptor} from './auth/refresh-token.interceptor';
 
 const MAIN_RESOURCES = [
-  {
-    provide: BaseHttpService, useClass: BaseHttpService
-  },
+  BaseHttpService,
   // {
   //   provide: CraftsmenResourceService, deps: [BaseHttpService],
   //   useFactory(http: BaseHttpService) {

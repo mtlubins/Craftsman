@@ -1,8 +1,58 @@
-nav {
-  .nav-link {
-    margin-right: 20px;
-    font-size: 20px;
-    font-weight: bold;
-  }
+@import '../../../assets/styles/buttons';
+@import '../../../assets/styles/variables';
+
+.header-container {
+  min-height: 120px;
   margin-bottom: 50px;
+  background-color: $nav-brown;
+  position: relative;
+
+  .photo-layer {
+    background: url('../../../assets/images/menu_image.png');
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+  }
+
+  .nav-container {
+    list-style-type: none;
+    color: white;
+    height: 100%;
+    padding: 0 160px;
+    margin: 0;
+    display: -webkit-box;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+
+    .nav-item {
+      font-size: $font-common-size;
+      font-weight: normal;
+      font-family: $font-open-sans;
+      color: $white;
+      padding: 0 25px;
+      .nav-link {
+        //padding-right: 20px;
+        color: $white;
+      }
+    }
+    .button-group {
+
+      @include respondTo($device-xxxl) {
+        padding-left: 150px;
+      }
+      .button-white-transparent {
+        margin-left: 25px;
+      }
+    }
+  }
+
 }
+
+
+

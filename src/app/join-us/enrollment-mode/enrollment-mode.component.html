@@ -1,0 +1,31 @@
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-md-12 registration-headers">
+      <span class="yellow-header">Formularz rejestracyjny</span>
+      <h3 class="join-us-header">Zarejestruj się u nas!</h3>
+    </div>
+  </div>
+  <div class="row selection-container">
+      <div (click)="enrollUser()" class="user">
+        <div class="photo-layer-user">
+          <svg class="craftsman-icon">
+            <use xlink:href="/assets/images/vectors/user_icon.svg#userico"></use>
+          </svg>
+          <p class="craftsman-text">Zarejestruj się jako zleceniodawca</p>
+        </div>
+      </div>
+
+      <div (click)="enrollCraftsman()" class="craftsman">
+        <div class="photo-layer-craftsman">
+          <svg class="craftsman-icon">
+            <use xlink:href="/assets/images/vectors/craftsman_icon.svg#crafico"></use>
+          </svg>
+          <p class="craftsman-text">Zarejestruj się jako rzemieślnik</p>
+        </div>
+      </div>
+  </div>
+
+
+</div>
+
+

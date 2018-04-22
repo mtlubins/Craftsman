@@ -21,8 +21,17 @@ const APP_ROUTES: Routes = [
     resolve: {resolvedProfileData: UserProfileResolver}
   },
   {
+    path: 'join-us',
+    loadChildren: './join-us/join-us.module#JoinUsModule'
+  },
+  {
     path: 'error-occurred',
     component: ErrorOccurredComponent
+  },
+  {
+    path: '',
+    redirectTo: '',
+    pathMatch: 'full'
   }
 ];
 

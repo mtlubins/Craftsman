@@ -7,6 +7,7 @@ import {SharedModule} from './shared/shared.module';
 import {RouterModule} from '@angular/router';
 import {AppRouterModule} from './app.routing';
 import {UserAccountModule} from './my-account/user-account.module';
+import {ReactiveFormsModule} from '@angular/forms';
 
 
 @NgModule({
@@ -15,9 +16,9 @@ import {UserAccountModule} from './my-account/user-account.module';
   ],
   imports: [
     AppRouterModule,
-
     BrowserModule,
     RouterModule,
+    ReactiveFormsModule,
 
     RestLayerModule,
     SharedModule,

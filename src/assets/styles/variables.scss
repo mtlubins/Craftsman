@@ -1,0 +1,33 @@
+//Colors
+$dirty-yellow: #cb8c3a;
+$nav-brown: #3f2d15;
+$white: #ffffff;
+$black: #000000;
+//Fonts
+$font-open-sans: "Open Sans";
+$font-button-size: 15px;
+$font-common-size: 15px;
+$font-semi-headers: 20px;
+$font-main-headers: 40px;
+//Transition
+$transition-time-mobile: 300ms;
+$transition-time-tablet: 400ms;
+$transition-time-desktop: 300ms;
+
+$transition-time-slow: 400ms;
+$transition-time-medium: 200ms;
+$transition-time-fast: 100ms;
+
+//variables
+$infinity: -1;
+// Devices
+$device-xs: (start: 0px, end: 319px); // smartphone
+$device-sm: (start: 320px, end: 575px); // medium smartphone
+$device-md: (start: 576px, end: 767px); // big smartphone
+$device-lg: (start: 768px, end: 1023px); // tablet
+$device-xl: (start: 1024px, end: 1199px); // desktop-small
+$device-xxl: (start: 1200px, end: 1399px); // desktop-1
+$device-xxxl: (start: 1400px, end: $infinity); // desktop-2
+
+//Buttons
+$button-border-size: 2px;

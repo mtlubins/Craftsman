@@ -1,0 +1,69 @@
+@import './variables';
+@mixin button($normal-state: (), $hover: ()) {
+  $normal-default-values: (background-color: white, color: black, text-decoration: none,
+    min-width: 180px, min-height: 45px, cursor: pointer, font-family: $font-open-sans, font-size: $font-button-size,
+    border: 2px solid white);
+  $hover-default-values: (background-color: black, color: white, text-decoration: none);
+
+  $normal-state-map: map_merge($normal-default-values, $normal-state);
+  $hover-map: map-merge($hover-default-values, $hover);
+
+  @include transitions('background, color');
+
+  &, &:visited {
+    @each $key in map_keys($normal-state-map) {
+      #{$key}: map_get($normal-state-map, $key);
+    }
+  }
+
+  &:hover {
+    @each $key in map-keys($hover-map) {
+      #{$key}: map-get($hover-map, $key);
+    }
+  }
+
+  &:focus, &:active {
+    outline: none;
+  }
+}
+
+@mixin transitions($value) {
+  //unquote($value);
+  //$prefixes: (webkit, moz, ms, o);
+  //@each $prefix in $prefixes {
+  //  #{'-' + $prefix + '-' + transition}: $value $transition-time-desktop;
+  //}
+  -webkit-transition: all $transition-time-desktop;
+  -moz-transition: all $transition-time-desktop;
+  -o-transition: all $transition-time-desktop;
+  transition: all $transition-time-desktop;
+
+}
+
+@mixin respondTo($media) {
+  @include respondFromTo($media) {
+    @content;
+  };
+}
+
+@mixin respondFromTo($deviceFrom, $deviceTo: null) {
+  $start: map-get($deviceFrom, start);
+  $end: $infinity;
+
+  @if ($deviceTo) {
+    $end: map-get($deviceTo, end);
+  } @else {
+    $end: map-get($deviceFrom, end);
+  }
+
+  @if $end == $infinity {
+    @media (min-width: $start) {
+      @content;
+    }
+  } @else {
+    @media (min-width: $start) and (max-width: $end) {
+      @content;
+    }
+  }
+}
+

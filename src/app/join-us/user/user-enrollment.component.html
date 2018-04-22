@@ -1,0 +1,68 @@
+<div class="container registration-container">
+  <div class="row">
+    <div class="registration-headers col-md-12">
+      <span class="yellow-header">Formularz rejestracyjny</span>
+      <h3 class="join-us-header">Zarejestruj się u nas!</h3>
+      <span class="yellow-header">Zleceniodawca</span>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-12">
+      <form [formGroup]="enrollmentForm">
+        <div class="form-group-ext">
+          <label class="margin-top form-label-ext">Imię
+            <input class="form-control form-control-ext" formControlName="firstName">
+          </label>
+        </div>
+        <div class="form-group-ext">
+          <label class="form-label-ext">Nazwisko
+            <input class="form-control form-control-ext" formControlName="lastName">
+          </label>
+        </div>
+        <div class="form-group-ext">
+          <label class="form-label-ext">E-mail
+            <input class="form-control form-control-ext" formControlName="email">
+          </label>
+        </div>
+        <div class="form-group-ext">
+          <label class="form-label-ext">Hasło
+            <input class="form-control form-control-ext" formControlName="password">
+          </label>
+        </div>
+        <div class="form-group-ext">
+          <label class="form-label-ext">Powtórz hasło
+            <input class="form-control form-control-ext" formControlName="confirmPassword">
+          </label>
+        </div>
+        <div class="form-group-ext">
+          <label class="form-label-ext">Numer telefonu
+            <input class="form-control form-control-ext" formControlName="phone">
+          </label>
+        </div>
+        <div class="form-group-ext">
+          <label class="form-label-ext">Miasto
+            <input class="form-control form-control-ext" formControlName="city">
+          </label>
+        </div>
+        <div class="form-group-ext">
+          <label class="form-label-ext">Ulica
+            <input class="form-control form-control-ext" formControlName="street">
+          </label>
+        </div>
+        <div class="form-group-ext">
+          <label class="checkbox-container">
+            <input type="checkbox" formControlName="terms">
+            <span class="checkmark"></span>
+          </label>
+          <span class="private-policy">Zgadzam się z <a [routerLink]="['/terms-conditions']">Warunkami użytkowania i Polityką prywatności</a></span>
+        </div>
+      </form>
+      <div class="form-group-ext">
+        <div class="form-control-ext">
+          <button (click)="send()" class="button-yellow-white">Zarejestruj</button>
+          <span class="account-question">Masz już konto? <a [routerLink]="['/login']">Zaloguj się!</a></span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
