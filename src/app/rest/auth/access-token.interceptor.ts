@@ -1,22 +1,24 @@
-import {Injectable} from '@angular/core';
+import {Injectable, Injector} from '@angular/core';
 import {HttpEvent, HttpHandler, HttpInterceptor, HttpRequest} from '@angular/common/http';
-import {JwtStorageService} from '../../shared/storage/jwt-storage.service';
 import {Observable} from 'rxjs/Observable';
 import {environment} from '../../../environments/environment';
+import {AuthService} from './auth.service';
 
 @Injectable()
 export class AccessTokenInterceptor implements HttpInterceptor {
 
-  constructor(private jwtService: JwtStorageService) {}
+  authService: AuthService;
+
+  constructor(private inject: Injector) {}
 
   intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
+    this.authService = this.inject.get(AuthService);
     const needAuthEndpointsList: string[] = [
       environment.CRAFTSMEN_PATH + environment.PROFILE_PATH
     ];
 
     if (needAuthEndpointsList.find(element => request.url.indexOf(element) > -1)) {
-      const accessToken = this.jwtService.getToken();
-      console.log(accessToken);
+      const accessToken = this.authService.getToken();
       const newRequest = request.clone({
         headers: request.headers.set('Authorization', `Bearer ${accessToken}`),
       });

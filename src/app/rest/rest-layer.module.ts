@@ -5,6 +5,7 @@ import {CraftsmenResourceService} from './resources/craftsmen-resource/craftsmen
 import {AuthService} from './auth/auth.service';
 import {SharedModule} from '../shared/shared.module';
 import {AccessTokenInterceptor} from './auth/access-token.interceptor';
+import {RefreshTokenInterceptor} from './auth/refresh-token.interceptor';
 
 const MAIN_RESOURCES = [
   {
@@ -26,7 +27,8 @@ const MAIN_RESOURCES = [
   providers: [
     ...MAIN_RESOURCES,
     AuthService,
-    {provide: HTTP_INTERCEPTORS, useClass: AccessTokenInterceptor, multi: true}
+    {provide: HTTP_INTERCEPTORS, useClass: AccessTokenInterceptor, multi: true},
+    {provide: HTTP_INTERCEPTORS, useClass: RefreshTokenInterceptor, multi: true}
   ],
 })
 export class RestLayerModule {}
