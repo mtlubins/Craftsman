@@ -5,6 +5,7 @@ import {CraftsmenListComponent} from './shared/craftsmen-list/craftsmen-list.com
 import {UserProfileComponent} from './my-account/user-profile/component/user-profile.component';
 import {UserProfileResolver} from './my-account/user-profile/service/user-profile.resolver';
 import {ErrorOccurredComponent} from './shared/error-occurred/error-occurred.component';
+import {PasswordFormComponent} from './shared/password-form/password-form.component';
 
 const APP_ROUTES: Routes = [
   {
@@ -23,6 +24,10 @@ const APP_ROUTES: Routes = [
   {
     path: 'join-us',
     loadChildren: './join-us/join-us.module#JoinUsModule'
+  },
+  {
+    path: 'paswd',
+    component: PasswordFormComponent
   },
   {
     path: 'error-occurred',

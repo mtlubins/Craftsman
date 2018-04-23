@@ -12,31 +12,26 @@
         <div class="form-group-ext">
           <label class="margin-top form-label-ext">Imię
             <input class="form-control form-control-ext" formControlName="firstName">
+            <app-field-validator *ngIf="cantTouchThis(this.firstName)" [errors]="this.firstName.errors"></app-field-validator>
           </label>
         </div>
         <div class="form-group-ext">
           <label class="form-label-ext">Nazwisko
             <input class="form-control form-control-ext" formControlName="lastName">
+            <app-field-validator *ngIf="cantTouchThis(this.lastName)" [errors]="this.lastName.errors"></app-field-validator>
           </label>
         </div>
         <div class="form-group-ext">
           <label class="form-label-ext">E-mail
             <input class="form-control form-control-ext" formControlName="email">
+            <app-field-validator *ngIf="cantTouchThis(this.email)" [errors]="this.email.errors"></app-field-validator>
           </label>
         </div>
-        <div class="form-group-ext">
-          <label class="form-label-ext">Hasło
-            <input class="form-control form-control-ext" formControlName="password">
-          </label>
-        </div>
-        <div class="form-group-ext">
-          <label class="form-label-ext">Powtórz hasło
-            <input class="form-control form-control-ext" formControlName="confirmPassword">
-          </label>
-        </div>
+
         <div class="form-group-ext">
           <label class="form-label-ext">Numer telefonu
             <input class="form-control form-control-ext" formControlName="phone">
+            <app-field-validator *ngIf="cantTouchThis(this.phone)" [errors]="this.phone.errors"></app-field-validator>
           </label>
         </div>
         <div class="form-group-ext">
@@ -55,6 +50,7 @@
             <span class="checkmark"></span>
           </label>
           <span class="private-policy">Zgadzam się z <a [routerLink]="['/terms-conditions']">Warunkami użytkowania i Polityką prywatności</a></span>
+          <app-field-validator *ngIf="cantTouchThis(this.terms)" [errors]="this.terms.errors"></app-field-validator>
         </div>
       </form>
       <div class="form-group-ext">

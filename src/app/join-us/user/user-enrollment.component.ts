@@ -1,5 +1,5 @@
 import {Component} from '@angular/core';
-import {FormBuilder, FormGroup} from '@angular/forms';
+import {FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
 
 @Component({
   selector: 'app-user-enrollment',
@@ -14,20 +14,63 @@ export class UserEnrollmentComponent {
   }
 
   send() {
+    this.cantTouchTheForm(this.enrollmentForm);
     console.log(this.enrollmentForm.value);
+    console.log(this.enrollmentForm.valid);
+    console.log(this.email);
   }
 
   createForm() {
     this.enrollmentForm = this.fb.group({
-      firstName: [],
-      lastName: [],
-      email: [],
-      password: [],
-      confirmPassword: [],
-      phone: [],
+      firstName: ['', Validators.required],
+      lastName: ['', Validators.required],
+      email: ['', Validators.compose([
+        Validators.required,
+        Validators.email
+      ])],
+      phone: ['', Validators.compose([
+        Validators.required,
+        Validators.pattern(/^-?(0|[1-9]\d*)?$/)
+      ])],
       city: [],
       street: [],
-      terms: [],
+      terms: ['', Validators.requiredTrue],
     });
   }
+
+  cantTouchTheForm(form: FormGroup) {
+    Object.keys(form.controls).forEach((field) => {
+      this.markFieldOnForm(form, field);
+    });
+  }
+
+  markFieldOnForm(formName: FormGroup, fieldName: string) {
+    formName.controls[fieldName].markAsTouched();
+    formName.controls[fieldName].markAsDirty();
+  }
+
+  cantTouchThis(controlName: FormControl) {
+    return controlName.dirty || controlName.touched;
+  }
+
+  get firstName() {
+    return this.enrollmentForm.get('firstName');
+  }
+
+  get lastName() {
+    return this.enrollmentForm.get('lastName');
+  }
+
+  get email() {
+    return this.enrollmentForm.get('email');
+  }
+
+  get phone() {
+    return this.enrollmentForm.get('phone');
+  }
+
+  get terms() {
+    return this.enrollmentForm.get('terms');
+  }
 }
+
