@@ -11,27 +11,39 @@
       <form [formGroup]="enrollmentForm">
         <div class="form-group-ext">
           <label class="margin-top form-label-ext">Imię
-            <input class="form-control form-control-ext" formControlName="firstName">
-            <app-field-validator *ngIf="cantTouchThis(this.firstName)" [errors]="this.firstName.errors"></app-field-validator>
+            <input class="form-control form-control-ext"
+                   [ngClass]="{'invalid-border': firstName.errors && fieldValidationService.cantTouchThis(firstName)}"
+                   formControlName="firstName">
+            <app-field-validator *ngIf="fieldValidationService.cantTouchThis(firstName)"
+                                 [errors]="firstName.errors"></app-field-validator>
           </label>
         </div>
         <div class="form-group-ext">
           <label class="form-label-ext">Nazwisko
-            <input class="form-control form-control-ext" formControlName="lastName">
-            <app-field-validator *ngIf="cantTouchThis(this.lastName)" [errors]="this.lastName.errors"></app-field-validator>
+            <input class="form-control form-control-ext"
+                   [ngClass]="{'invalid-border': lastName.errors && fieldValidationService.cantTouchThis(lastName)}"
+                   formControlName="lastName">
+            <app-field-validator *ngIf="fieldValidationService.cantTouchThis(lastName)"
+                                 [errors]="lastName.errors"></app-field-validator>
           </label>
         </div>
         <div class="form-group-ext">
           <label class="form-label-ext">E-mail
-            <input class="form-control form-control-ext" formControlName="email">
-            <app-field-validator *ngIf="cantTouchThis(this.email)" [errors]="this.email.errors"></app-field-validator>
+            <input class="form-control form-control-ext"
+                   [ngClass]="{'invalid-border': email.errors && fieldValidationService.cantTouchThis(email)}"
+                   formControlName="email">
+            <app-field-validator *ngIf="fieldValidationService.cantTouchThis(email)"
+                                 [errors]="email.errors"></app-field-validator>
           </label>
         </div>
 
         <div class="form-group-ext">
           <label class="form-label-ext">Numer telefonu
-            <input class="form-control form-control-ext" formControlName="phone">
-            <app-field-validator *ngIf="cantTouchThis(this.phone)" [errors]="this.phone.errors"></app-field-validator>
+            <input class="form-control form-control-ext"
+                   [ngClass]="{'invalid-border': phone.errors && fieldValidationService.cantTouchThis(phone)}"
+                   formControlName="phone">
+            <app-field-validator *ngIf="fieldValidationService.cantTouchThis(phone)"
+                                 [errors]="phone.errors"></app-field-validator>
           </label>
         </div>
         <div class="form-group-ext">
@@ -47,10 +59,12 @@
         <div class="form-group-ext">
           <label class="checkbox-container">
             <input type="checkbox" formControlName="terms">
-            <span class="checkmark"></span>
+            <span class="checkmark" [ngClass]="{'invalid-border': terms.errors && fieldValidationService.cantTouchThis(terms)}"></span>
           </label>
-          <span class="private-policy">Zgadzam się z <a [routerLink]="['/terms-conditions']">Warunkami użytkowania i Polityką prywatności</a></span>
-          <app-field-validator *ngIf="cantTouchThis(this.terms)" [errors]="this.terms.errors"></app-field-validator>
+          <span class="private-policy">Zgadzam się z
+            <a [routerLink]="['/terms-conditions']">Warunkami użytkowania i Polityką prywatności</a></span>
+          <app-field-validator *ngIf="fieldValidationService.cantTouchThis(terms)"
+                               [errors]="terms.errors"></app-field-validator>
         </div>
       </form>
       <div class="form-group-ext">

@@ -15,8 +15,7 @@ export class LoginComponent implements OnInit {
   public token: any;
 
   constructor(private fb: FormBuilder,
-              private authService: AuthService,
-              private jwtService: JwtStorageService) {}
+              private authService: AuthService) {}
 
   ngOnInit() {
     this.buildForm();
@@ -29,10 +28,9 @@ export class LoginComponent implements OnInit {
     };
     console.log(loginData);
     this.authService.login(loginData)
-      .subscribe(
-        (response: IAccessToken) => {
-          this.token = this.jwtService.getToken();
-      },
+      .subscribe(() => {
+        // TO DO REDIRECT ?
+        },
       (err: IHttpError) => {
             console.log(err.userMessage);
       });
@@ -40,8 +38,8 @@ export class LoginComponent implements OnInit {
 
   buildForm() {
     this.loginForm = this.fb.group({
-      login: ['', Validators.compose([Validators.required])],
-      password: ['', Validators.compose([Validators.required])]
+      login: ['', [Validators.required]],
+      password: ['', [Validators.required]]
     });
   }
 

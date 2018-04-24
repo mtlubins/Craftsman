@@ -1,5 +1,6 @@
 import {Component} from '@angular/core';
 import {FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
+import {FieldValidationService} from '../../shared/field-validator/field-validation.service';
 
 @Component({
   selector: 'app-user-enrollment',
@@ -9,18 +10,19 @@ import {FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
 export class UserEnrollmentComponent {
   enrollmentForm: FormGroup;
 
-  constructor(private fb: FormBuilder) {
-    this.createForm();
+  constructor(private fb: FormBuilder,
+              public fieldValidationService: FieldValidationService) {
+    this.buildForm();
   }
 
   send() {
-    this.cantTouchTheForm(this.enrollmentForm);
+    this.fieldValidationService.cantTouchTheForm(this.enrollmentForm);
     console.log(this.enrollmentForm.value);
     console.log(this.enrollmentForm.valid);
     console.log(this.email);
   }
 
-  createForm() {
+  buildForm() {
     this.enrollmentForm = this.fb.group({
       firstName: ['', Validators.required],
       lastName: ['', Validators.required],
@@ -28,29 +30,11 @@ export class UserEnrollmentComponent {
         Validators.required,
         Validators.email
       ])],
-      phone: ['', Validators.compose([
-        Validators.required,
-        Validators.pattern(/^-?(0|[1-9]\d*)?$/)
-      ])],
+      phone: ['', Validators.pattern(/^-?(0|[1-9]\d*)?$/)],
       city: [],
       street: [],
       terms: ['', Validators.requiredTrue],
     });
-  }
-
-  cantTouchTheForm(form: FormGroup) {
-    Object.keys(form.controls).forEach((field) => {
-      this.markFieldOnForm(form, field);
-    });
-  }
-
-  markFieldOnForm(formName: FormGroup, fieldName: string) {
-    formName.controls[fieldName].markAsTouched();
-    formName.controls[fieldName].markAsDirty();
-  }
-
-  cantTouchThis(controlName: FormControl) {
-    return controlName.dirty || controlName.touched;
   }
 
   get firstName() {

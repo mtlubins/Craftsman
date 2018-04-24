@@ -13,6 +13,8 @@ import {ReactiveFormsModule} from '@angular/forms';
 import {FieldValidatorComponent} from './field-validator/field-validator.component';
 import {MapToIterablePipe} from './pipes/map-to-iterable.pipe';
 import {PasswordFormComponent} from './password-form/password-form.component';
+import {FieldValidationService} from './field-validator/field-validation.service';
+import {PasswordValidationService} from './password-form/password-validation-service';
 
 const MODULE_COMPONENTS = [
   LoginComponent, CraftsmenListComponent, HeaderComponent, ErrorOccurredComponent,
@@ -27,7 +29,7 @@ const MODULE_PIPES = [
   imports: [RouterModule, CommonModule, ReactiveFormsModule],
   declarations : [...MODULE_COMPONENTS, ...MODULE_PIPES],
   exports: [...MODULE_COMPONENTS, ...MODULE_PIPES],
-  providers: [LocaleStorageService, JwtStorageService]
+  providers: [LocaleStorageService, JwtStorageService, FieldValidationService, PasswordValidationService]
 })
 export class SharedModule {
 }
