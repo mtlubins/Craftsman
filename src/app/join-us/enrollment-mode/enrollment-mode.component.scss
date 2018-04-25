@@ -6,8 +6,9 @@ svg {
   height: 200px;
 }
 .registration-headers {
-  display: flex;
-  flex-flow: column;
+  display: block;
+  margin-right: auto;
+  margin-left: auto;
   font-family: $font-open-sans;
   margin-bottom: 50px;
   text-align: center;

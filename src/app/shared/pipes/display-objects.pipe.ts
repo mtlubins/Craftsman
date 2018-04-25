@@ -1,7 +1,7 @@
 import {Pipe, PipeTransform} from '@angular/core';
 
 @Pipe({name: 'displayObj'})
-export class PipeDisplayObjects implements PipeTransform {
+export class DisplayObjectsPipe implements PipeTransform {
   transform(value): any {
     const objToArray = [];
     for (const key in value) {
