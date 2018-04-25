@@ -8,7 +8,7 @@ import {AccessTokenInterceptor} from './auth/access-token.interceptor';
 import {RefreshTokenInterceptor} from './auth/refresh-token.interceptor';
 
 const MAIN_RESOURCES = [
-  BaseHttpService,
+  BaseHttpService, AuthService,
   // {
   //   provide: CraftsmenResourceService, deps: [BaseHttpService],
   //   useFactory(http: BaseHttpService) {
@@ -20,13 +20,16 @@ const MAIN_RESOURCES = [
   },
 ];
 
+const INTERCEPTORS = [
+  {provide: HTTP_INTERCEPTORS, useClass: AccessTokenInterceptor, multi: true},
+  {provide: HTTP_INTERCEPTORS, useClass: RefreshTokenInterceptor, multi: true}
+  ];
+
 @NgModule({
-  imports: [HttpClientModule, SharedModule],
+  imports: [HttpClientModule],
   providers: [
     ...MAIN_RESOURCES,
-    AuthService,
-    {provide: HTTP_INTERCEPTORS, useClass: AccessTokenInterceptor, multi: true},
-    {provide: HTTP_INTERCEPTORS, useClass: RefreshTokenInterceptor, multi: true}
+    ...INTERCEPTORS
   ],
 })
 export class RestLayerModule {}

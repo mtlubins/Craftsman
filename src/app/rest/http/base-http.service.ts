@@ -11,7 +11,7 @@ export class BaseHttpService implements IHttpService {
 
     protected config: AuthConfig;
 
-  static handleHttpError(error: HttpErrorResponse): Observable<any> {
+  static handleHttpError(error: HttpErrorResponse): Observable<IHttpError> {
     const dataError: IHttpError = {
       status: error.status,
       message: error.message,
@@ -24,16 +24,16 @@ export class BaseHttpService implements IHttpService {
         this.config = new AuthConfig();
     }
 
+  protected getHeaders() {
+    const globalHeadersMap: any = this.config.globalHeaders.reduce((headersMap, header) => {
+      return Object.assign(headersMap, header);
+    });
+    return new HttpHeaders(globalHeadersMap);
+  }
+
     request<T>(method: string, url: string, body?: any): Observable<T> {
       const headers = this.getHeaders();
       return this.httpClient.request<T>(method, url, {body: body, headers: headers, observe: 'body'});
-    }
-
-    protected getHeaders() {
-        const globalHeadersMap: any = this.config.globalHeaders.reduce((headersMap, header) => {
-            return Object.assign(headersMap, header);
-        });
-        return new HttpHeaders(globalHeadersMap);
     }
 
     get<T>(url: string): Observable<T> {

@@ -10,8 +10,8 @@ export class RefreshTokenInterceptor implements HttpInterceptor {
   constructor(private inject: Injector, private router: Router) {}
   intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
     this.authService = this.inject.get(AuthService);
-    if (!this.authService.isTokenExpired()) {
-      this.router.navigate(['/login']);
+    if (this.authService.isTokenExpired()) {
+      console.log('dupa intercept');
     }
     return next.handle(request);
   }

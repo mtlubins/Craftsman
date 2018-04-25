@@ -25,7 +25,7 @@ export class AuthService {
 
   isTokenExpired() {
     const decodedPayload = JSON.parse(atob(this.getToken().split('.')[1])).exp;
-    return decodedPayload > Math.trunc(Date.now() / 1000);
+    return decodedPayload <= Math.trunc(Date.now() / 1000);
   }
 
   getToken() {
