@@ -1,5 +1,5 @@
 import {Injectable} from '@angular/core';
-import {FormControl, FormGroup} from '@angular/forms';
+import {AbstractControl, FormControl, FormGroup} from '@angular/forms';
 
 @Injectable()
 export class FieldValidationService {
@@ -11,11 +11,15 @@ export class FieldValidationService {
   }
 
   cantTouchTheField(formName: FormGroup, fieldName: string) {
-    formName.controls[fieldName].markAsTouched();
-    formName.controls[fieldName].markAsDirty();
+    this.cantTouchTheControl(formName.controls[fieldName]);
   }
 
   cantTouchThis(controlName: FormControl) {
     return controlName.dirty || controlName.touched;
+  }
+
+  cantTouchTheControl(controlName: FormControl | AbstractControl) {
+    controlName.markAsTouched();
+    controlName.markAsDirty();
   }
 }

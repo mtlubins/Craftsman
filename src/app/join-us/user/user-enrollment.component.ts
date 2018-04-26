@@ -1,5 +1,5 @@
-import {Component} from '@angular/core';
-import {FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
+import {Component, ViewChild} from '@angular/core';
+import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {FieldValidationService} from '../../shared/field-validator/field-validation.service';
 
 @Component({
@@ -8,7 +8,8 @@ import {FieldValidationService} from '../../shared/field-validator/field-validat
   styleUrls: ['user-enrollment.component.scss']
 })
 export class UserEnrollmentComponent {
-  enrollmentForm: FormGroup;
+  @ViewChild('passwordForm') passwordForm;
+  public enrollmentForm: FormGroup;
 
   constructor(private fb: FormBuilder,
               public fieldValidationService: FieldValidationService) {
@@ -17,9 +18,12 @@ export class UserEnrollmentComponent {
 
   send() {
     this.fieldValidationService.cantTouchTheForm(this.enrollmentForm);
-    console.log(this.enrollmentForm.value);
-    console.log(this.enrollmentForm.valid);
-    console.log(this.email);
+    const passwordData = this.passwordForm.submitForm();
+    if (passwordData && this.enrollmentForm.valid) {
+      console.log(Object.assign({}, passwordData, this.enrollmentForm.value));
+    } else {
+      console.log('dupa kupa');
+    }
   }
 
   buildForm() {

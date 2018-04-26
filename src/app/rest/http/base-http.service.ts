@@ -9,9 +9,9 @@ import {IHttpError} from './http-error.interface';
 @Injectable()
 export class BaseHttpService implements IHttpService {
 
-    protected config: AuthConfig;
+  protected config: AuthConfig;
 
-  static handleHttpError(error: HttpErrorResponse): Observable<IHttpError> {
+  static handleHttpError(error: HttpErrorResponse): Observable<any> {
     const dataError: IHttpError = {
       status: error.status,
       message: error.message,
@@ -55,5 +55,4 @@ export class BaseHttpService implements IHttpService {
     delete<T>(url: string, body: any) {
         return this.request<T>('delete', url, body);
     }
-
 }

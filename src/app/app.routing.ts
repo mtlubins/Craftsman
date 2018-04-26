@@ -1,6 +1,6 @@
 import {RouterModule, Routes} from '@angular/router';
 import {LoginComponent} from './shared/login/login.component';
-import {CraftsmenListComponent} from './shared/craftsmen-list/craftsmen-list.component';
+import {CraftsmenListComponent} from './my-account/craftsmen-list/craftsmen-list.component';
 
 import {UserProfileComponent} from './my-account/user-profile/component/user-profile.component';
 import {UserProfileResolver} from './my-account/user-profile/service/user-profile.resolver';

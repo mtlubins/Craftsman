@@ -3,6 +3,7 @@ import {Observable} from 'rxjs/Observable';
 import {BaseHttpService} from '../../../rest/http/base-http.service';
 import {environment} from '../../../../environments/environment';
 import {ICraftsman} from '../../../rest/resources/craftsmen-resource/craftsman.interface';
+import {IHttpError} from '../../../rest/http/http-error.interface';
 
 @Injectable()
 export class UserProfileService {

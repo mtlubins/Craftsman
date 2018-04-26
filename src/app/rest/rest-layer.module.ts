@@ -3,7 +3,6 @@ import {HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
 import {BaseHttpService} from './http/base-http.service';
 import {CraftsmenResourceService} from './resources/craftsmen-resource/craftsmen-resource.service';
 import {AuthService} from './auth/auth.service';
-import {SharedModule} from '../shared/shared.module';
 import {AccessTokenInterceptor} from './auth/access-token.interceptor';
 import {RefreshTokenInterceptor} from './auth/refresh-token.interceptor';
 
