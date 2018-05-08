@@ -8,9 +8,20 @@ import {EnrollmentModeComponent} from './enrollment-mode/enrollment-mode.compone
 import {CraftsmanEnrollmentComponent} from './craftsman/craftsman-enrollment.component';
 import {SharedModule} from '../shared/shared.module';
 
+const MODULE_NG_IMPORTS = [
+  CommonModule, ReactiveFormsModule
+];
+
+const MODULE_IMPORTS = [
+  JoinUsRouting, SharedModule
+];
+
+const MODULE_DECLARATIONS = [
+  JoinUsComponent, UserEnrollmentComponent, EnrollmentModeComponent, CraftsmanEnrollmentComponent
+];
+
 @NgModule({
-  imports: [CommonModule, JoinUsRouting, ReactiveFormsModule, SharedModule],
-  declarations: [JoinUsComponent, UserEnrollmentComponent, EnrollmentModeComponent, CraftsmanEnrollmentComponent],
-  exports: []
+  imports: [...MODULE_NG_IMPORTS, ...MODULE_IMPORTS],
+  declarations: [...MODULE_DECLARATIONS]
 })
 export class JoinUsModule {}

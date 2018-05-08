@@ -24,10 +24,14 @@ const MODULE_PIPES = [
   MapToIterablePipe, DisplayObjectsPipe
 ];
 
+const MODULE_PROVIDERS = [
+  LocaleStorageService, JwtStorageService, FieldValidationService, PasswordValidationService
+];
+
 @NgModule({
   imports: [RouterModule, CommonModule, ReactiveFormsModule],
   declarations : [...MODULE_COMPONENTS, ...MODULE_PIPES],
   exports: [...MODULE_COMPONENTS, ...MODULE_PIPES],
-  providers: [LocaleStorageService, JwtStorageService, FieldValidationService, PasswordValidationService]
+  providers: [...MODULE_PROVIDERS]
 })
 export class SharedModule {}

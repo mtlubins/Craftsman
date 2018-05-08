@@ -1,20 +1,55 @@
-<div class="container">
-  <form [formGroup]="loginForm">
-    <div class="form-group">
-      <label class="form-login-label" for="login">Login</label>
-      <input type="text" id="login" class="form-control form-control-ext rounded-0"
-             formControlName="login" placeholder="E-mail or user name...">
-      <!--<mp-field-validator [errors]="login.errors" [ctrl]="login"></mp-field-validator>-->
-    </div>
+<div class="container login-container">
 
-    <div class="form-group">
-      <label class="form-login-label" for="password">Password</label>
-      <input type="password" class="form-control form-control-ext rounded-0" id="password"
-             formControlName="password" placeholder="Password">
-      <!--<mp-field-validator [errors]="password.errors" [ctrl]="password"></mp-field-validator>-->
-
+  <div class="row">
+    <div class="registration-headers col-md-12">
+      <span class="yellow-header">Panel logowania</span>
+      <h3 class="join-us-header">Zaloguj się do portalu!</h3>
     </div>
-    <button (click)="logIn()" class="button-yellow-white">Login</button>
-    <div>{{token}}</div>
-  </form>
+  </div>
+  <div class="row">
+    <div class="col-md-12">
+      <form [formGroup]="loginForm">
+        <div class="form-group-ext">
+          <label class="form-label-ext">Login
+            <input class="form-control form-control-ext"
+                   [ngClass]="{'invalid-border': email.errors && fieldValidationService.cantTouchThis(email)}"
+                   formControlName="email"
+                   placeholder="Login lub E-mail">
+            <app-field-validator *ngIf="fieldValidationService.cantTouchThis(email)"
+                                 [errors]="email.errors"></app-field-validator>
+          </label>
+        </div>
+
+        <div class="form-group-ext">
+          <label class="form-label-ext inner-addon">Hasło
+            <input class="form-control form-control-ext"
+                   [attr.type]="passwordVisible ? 'text' : 'password'"
+                   [ngClass]="{'invalid-border': password.errors && fieldValidationService.cantTouchThis(password)}"
+                   formControlName="password"
+                   placeholder="Hasło">
+            <svg class="show-password-icon"
+                 (mousedown)="showPassword()"
+                 (mouseup)="hidePassword()"
+                 (mouseleave)="hidePassword()">
+              <use xlink:href="/assets/images/vectors/eye_icon.svg#eyeico"></use>
+            </svg>
+          </label>
+          <app-field-validator *ngIf="fieldValidationService.cantTouchThis(password)"
+                               [errors]="password.errors"></app-field-validator>
+        </div>
+      </form>
+      <div class="login-button-group form-group-ext">
+        <div class="form-control-ext">
+          <button (click)="logIn()" class="button-yellow-white">Login</button>
+          <span class="account-question">Zapomniałeś <a [routerLink]="['/join-us']">hasła?</a> </span>
+        </div>
+      </div>
+      <div class="form-group-ext">
+        <div class="form-control-ext">
+          <span class="account-question">Nie masz jeszcze konta? <a [routerLink]="['/join-us']">Zarejestruj się!</a></span>
+        </div>
+      </div>
+      <div>{{token}}</div>
+    </div>
+  </div>
 </div>

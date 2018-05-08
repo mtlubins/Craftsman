@@ -14,7 +14,7 @@ export class AccessTokenInterceptor implements HttpInterceptor {
   intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
     this.authService = this.inject.get(AuthService);
     const needAuthEndpointsList: string[] = [
-      environment.CRAFTSMEN_PATH + environment.PROFILE_PATH
+      environment.USER_PATH + environment.USER_PROFILE_PATH
     ];
 
     if (needAuthEndpointsList.find(element => request.url.indexOf(element) > -1)) {

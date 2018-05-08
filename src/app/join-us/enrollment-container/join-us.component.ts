@@ -35,5 +35,4 @@ export class JoinUsComponent implements OnInit {
   get modeCraftsmanEnrollment(): number {
     return EnrollmentMode.craftsmanEnrollment;
   }
-
 }

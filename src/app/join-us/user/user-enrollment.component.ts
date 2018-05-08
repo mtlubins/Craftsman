@@ -1,6 +1,9 @@
 import {Component, ViewChild} from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {FieldValidationService} from '../../shared/field-validator/field-validation.service';
+import {IUser} from '../../shared/models/user.interface';
+import {AccountResourceService} from '../../rest/resources/account-resource/account-resource.service';
+import {BaseHttpService} from '../../rest/http/base-http.service';
 
 @Component({
   selector: 'app-user-enrollment',
@@ -12,7 +15,8 @@ export class UserEnrollmentComponent {
   public enrollmentForm: FormGroup;
 
   constructor(private fb: FormBuilder,
-              public fieldValidationService: FieldValidationService) {
+              public fieldValidationService: FieldValidationService,
+              private accountService: AccountResourceService) {
     this.buildForm();
   }
 
@@ -20,9 +24,15 @@ export class UserEnrollmentComponent {
     this.fieldValidationService.cantTouchTheForm(this.enrollmentForm);
     const passwordData = this.passwordForm.submitForm();
     if (passwordData && this.enrollmentForm.valid) {
-      console.log(Object.assign({}, passwordData, this.enrollmentForm.value));
+      const userToCreate: IUser = Object.assign({}, passwordData, this.enrollmentForm.value);
+      this.accountService.createUser(userToCreate)
+        .subscribe(
+          (response) => console.log('zarejestrowano'), // // Szczel, zaloguj i przenieś na jakąś spoko stronkę
+          (err) => console.log(err)
+        );
     } else {
       console.log('dupa kupa');
+      // Tutaj będzie tosterowy serwis
     }
   }
 
@@ -61,4 +71,3 @@ export class UserEnrollmentComponent {
     return this.enrollmentForm.get('terms');
   }
 }
-

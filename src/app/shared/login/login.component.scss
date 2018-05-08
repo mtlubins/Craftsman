@@ -1,31 +1,68 @@
 @import '../../../assets/styles/buttons';
+@import '../../../assets/styles/forms';
+@import '../../../assets/styles/variables';
 
-.form-group {
+.login-container {
+  display: block;
   margin-left: auto;
   margin-right: auto;
-  padding-left: auto;
-  padding-right: auto;
-  width: 260px;
-
-  .margin-top {
-    margin-top: 50px;
+  font-family: $font-open-sans;
+  margin-bottom: 50px;
+  a {
+    color: $dirty-yellow;
   }
 
-  label{
-    margin-bottom: 8px;
+  .registration-headers {
+    text-align: center;
+
+    .join-us-header {
+      font-size: $font-main-headers;
+      padding: 40px 0;
+    }
+    .yellow-header {
+      color: $dirty-yellow;
+      font-size: $font-semi-headers;
+    }
+  }
+
+  .form-group-ext, .form-control-ext {
+    @include respondFromTo($device-md, $device-xxxl) {
+      width: 380px;
+    }
+  }
+  .login-button-group {
+    margin-bottom: 50px;
+    .form-group-ext, .form-control-ext {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+  }
+
+  .inner-addon {
+    position: relative;
+
+    .show-password-icon {
+      cursor: pointer;
+      width: 30px;
+      height: 30px;
+      position: absolute;
+      top: 42px;
+      right: 15px;
+    }
+  }
+
+  .account-question {
+      margin-left: 50px;
+  }
+
+  .button-yellow-white {
+    $white-yellow: (
+      normal-state: (background-color: $dirty-yellow, border: $button-border-size solid $dirty-yellow, color: white, min-width: 180px),
+      hover: (background-color: white, border: $button-border-size solid $dirty-yellow, color: $dirty-yellow)
+    );
+    @include button($white-yellow...);
   }
 }
 
-.form-control-ext {
-  opacity: 0.87;
-  margin-top: 0px;
-  font-size: 16px;
-  width: 260px;
-  height: 48px;
-  background-color: rgb(255, 255, 255);
-  margin-left: auto;
-  margin-right: auto;
-  color: rgba(0, 0, 0, 0.87);
-  font-weight: normal;
-  line-height: 1.63;
-}
+

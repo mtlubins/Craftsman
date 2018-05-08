@@ -1,5 +1,7 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, DoCheck, OnInit} from '@angular/core';
 import {JwtStorageService} from './shared/storage/jwt-storage.service';
+import {Router, NavigationEnd } from '@angular/router';
+import 'rxjs/add/operator/filter';
 
 
 @Component({
@@ -7,23 +9,20 @@ import {JwtStorageService} from './shared/storage/jwt-storage.service';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss']
 })
+
 export class AppComponent implements OnInit {
-
-  // console.log(window.atob(accessToken));
-
-  constructor(private jwtService: JwtStorageService) {}
-
-  ngOnInit() {
-    // const accessToken = this.jwtService.getToken();
-    // const nowadays = Math.trunc(Date.now() / 1000);
-    // console.log(this.parseJwt(accessToken).exp > nowadays);
+  public hideElements: boolean;
+  constructor(private jwtService: JwtStorageService, private router: Router) {
+    const differentDisplayUrlList: string[] = [
+      'login', 'join-us'
+    ];
+    router.events.filter(event => event instanceof NavigationEnd)
+      .subscribe(() => {
+        this.hideElements = Boolean(differentDisplayUrlList.find(element => router.url.substring(1).indexOf(element) > -1));
+      });
   }
 
-  // parseJwt(token) {
-  //   let base64Url = token.split('.')[1];
-  //   console.log(base64Url);
-  //   let base64 = base64Url.replace('-', '+').replace('_', '/');
-  //   console.log(base64);
-  //   return JSON.parse(atob(base64));
-  // }
+  ngOnInit() {
+    // console.log(this.router.url.substring(1));
+  }
 }

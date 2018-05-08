@@ -5,9 +5,11 @@ import {CraftsmenResourceService} from './resources/craftsmen-resource/craftsmen
 import {AuthService} from './auth/auth.service';
 import {AccessTokenInterceptor} from './auth/access-token.interceptor';
 import {RefreshTokenInterceptor} from './auth/refresh-token.interceptor';
+import {AccountResourceService} from './resources/account-resource/account-resource.service';
+import {AuthGuard} from './auth/auth.guard';
 
 const MAIN_RESOURCES = [
-  BaseHttpService, AuthService,
+  BaseHttpService, AuthService, AccountResourceService, AuthGuard,
   // {
   //   provide: CraftsmenResourceService, deps: [BaseHttpService],
   //   useFactory(http: BaseHttpService) {
