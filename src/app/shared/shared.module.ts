@@ -14,18 +14,23 @@ import {MapToIterablePipe} from './pipes/map-to-iterable.pipe';
 import {PasswordFormComponent} from './password-form/password-form.component';
 import {FieldValidationService} from './field-validator/field-validation.service';
 import {PasswordValidationService} from './password-form/password-validation-service';
+import {LoggedUserStorageService} from './storage/logged-user-storage.service';
+import {UserPanelComponent} from './header/user-panel/user-panel.component';
+import {MapErrorsPipe} from './pipes/map-errors.pipe';
+import {HomepageComponent} from './homepage/homepage.component';
 
 const MODULE_COMPONENTS = [
   LoginComponent, HeaderComponent, ErrorOccurredComponent,
-  FooterComponent, FieldValidatorComponent, PasswordFormComponent
+  FooterComponent, FieldValidatorComponent, PasswordFormComponent, UserPanelComponent,
+  HomepageComponent
 ];
 
 const MODULE_PIPES = [
-  MapToIterablePipe, DisplayObjectsPipe
+  MapToIterablePipe, DisplayObjectsPipe, MapErrorsPipe
 ];
 
 const MODULE_PROVIDERS = [
-  LocaleStorageService, JwtStorageService, FieldValidationService, PasswordValidationService
+  LocaleStorageService, JwtStorageService, FieldValidationService, PasswordValidationService, LoggedUserStorageService
 ];
 
 @NgModule({

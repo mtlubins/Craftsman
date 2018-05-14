@@ -1,11 +1,19 @@
 import {NgModule} from '@angular/core';
 import {RouterModule, Routes} from '@angular/router';
-import {JoinUsComponent} from './enrollment-container/join-us.component';
+import {JoinUsNavComponent} from './join-us-nav/join-us-nav.component';
+import {UserEnrollmentComponent} from './user/user-enrollment.component';
+import {CraftsmanEnrollmentComponent} from './craftsman/craftsman-enrollment.component';
+import {JoinUsContainerComponent} from './join-us-container/join-us-container.component';
 
 const routes: Routes = [
   {
     path: '',
-    component: JoinUsComponent
+    component: JoinUsContainerComponent,
+    children: [
+      { path: '', component: JoinUsNavComponent},
+      { path: 'user', component: UserEnrollmentComponent },
+      { path: 'craftsman', component: CraftsmanEnrollmentComponent }
+    ]
   }
 ];
 

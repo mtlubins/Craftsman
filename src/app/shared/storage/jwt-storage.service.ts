@@ -7,11 +7,11 @@ export class JwtStorageService {
   constructor(private storage: LocaleStorageService) {}
 
   getToken() {
-    return JSON.parse(this.storage.getItem('token'));
+    return this.storage.getItem('token');
   }
 
   setToken(token) {
-    this.storage.setItem('token', JSON.stringify(token));
+    this.storage.setItem('token', token);
   }
 
   removeToken() {

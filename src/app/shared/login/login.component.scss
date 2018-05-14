@@ -51,17 +51,8 @@
       right: 15px;
     }
   }
-
   .account-question {
       margin-left: 50px;
-  }
-
-  .button-yellow-white {
-    $white-yellow: (
-      normal-state: (background-color: $dirty-yellow, border: $button-border-size solid $dirty-yellow, color: white, min-width: 180px),
-      hover: (background-color: white, border: $button-border-size solid $dirty-yellow, color: $dirty-yellow)
-    );
-    @include button($white-yellow...);
   }
 }
 

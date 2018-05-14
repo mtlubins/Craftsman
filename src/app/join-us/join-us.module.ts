@@ -1,12 +1,12 @@
 import {NgModule} from '@angular/core';
 import {CommonModule} from '@angular/common';
-import {JoinUsComponent} from './enrollment-container/join-us.component';
+import {JoinUsNavComponent} from './join-us-nav/join-us-nav.component';
 import {JoinUsRouting} from './join-us.routing';
 import {UserEnrollmentComponent} from './user/user-enrollment.component';
 import {ReactiveFormsModule} from '@angular/forms';
-import {EnrollmentModeComponent} from './enrollment-mode/enrollment-mode.component';
 import {CraftsmanEnrollmentComponent} from './craftsman/craftsman-enrollment.component';
 import {SharedModule} from '../shared/shared.module';
+import {JoinUsContainerComponent} from './join-us-container/join-us-container.component';
 
 const MODULE_NG_IMPORTS = [
   CommonModule, ReactiveFormsModule
@@ -17,7 +17,8 @@ const MODULE_IMPORTS = [
 ];
 
 const MODULE_DECLARATIONS = [
-  JoinUsComponent, UserEnrollmentComponent, EnrollmentModeComponent, CraftsmanEnrollmentComponent
+  JoinUsNavComponent, UserEnrollmentComponent, CraftsmanEnrollmentComponent,
+  JoinUsContainerComponent
 ];
 
 @NgModule({

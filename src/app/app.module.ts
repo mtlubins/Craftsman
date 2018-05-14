@@ -7,20 +7,24 @@ import {RouterModule} from '@angular/router';
 import {AppRouterModule} from './app.routing';
 import {UserAccountModule} from './my-account/user-account.module';
 import {ReactiveFormsModule} from '@angular/forms';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import {ToastModule} from 'ng2-toastr';
 
 @NgModule({
   declarations: [
     AppComponent
   ],
   imports: [
-    AppRouterModule,
     BrowserModule,
+    BrowserAnimationsModule,
     RouterModule,
+    AppRouterModule,
     ReactiveFormsModule,
 
     RestLayerModule,
     SharedModule,
-    UserAccountModule
+    UserAccountModule,
+    ToastModule.forRoot()
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -14,7 +14,7 @@ export class AppComponent implements OnInit {
   public hideElements: boolean;
   constructor(private jwtService: JwtStorageService, private router: Router) {
     const differentDisplayUrlList: string[] = [
-      'login', 'join-us'
+      'login'
     ];
     router.events.filter(event => event instanceof NavigationEnd)
       .subscribe(() => {

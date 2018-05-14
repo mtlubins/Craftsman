@@ -5,22 +5,6 @@ svg {
   width: 100px;
   height: 200px;
 }
-.registration-headers {
-  display: block;
-  margin-right: auto;
-  margin-left: auto;
-  font-family: $font-open-sans;
-  margin-bottom: 50px;
-  text-align: center;
-  .join-us-header {
-    font-size: $font-main-headers;
-    padding: 40px 0;
-  }
-  .yellow-header {
-    color: $dirty-yellow;
-    font-size: $font-semi-headers;
-  }
-}
 
 .selection-container {
   display: flex;
@@ -36,8 +20,7 @@ svg {
     border: 1px solid $dirty-yellow;
 
     &:hover {
-      background-color: $dirty-yellow;
-      border: 0;
+      background-color: grey;
     }
 
     .photo-layer-user {
@@ -68,20 +51,7 @@ svg {
     height: 650px;
 
     &:hover {
-      background-color: $white;
-      border: 1px solid $dirty-yellow;
-      .photo-layer-craftsman {
-        p {
-          color: $dirty-yellow;
-        }
-        .craftsman-icon {
-          fill: $dirty-yellow !important;
-        }
-        svg {
-          fill: $dirty-yellow !important;
-          color: $dirty-yellow !important;
-        }
-      }
+      background-color: grey;
     }
 
     .photo-layer-craftsman {

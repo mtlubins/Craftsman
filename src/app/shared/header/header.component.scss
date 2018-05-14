@@ -1,11 +1,13 @@
-@import '../../../assets/styles/buttons';
 @import '../../../assets/styles/variables';
 
 .header-container {
-  min-height: 80px;
+  min-height: 120px;
   margin-bottom: 50px;
   background-color: $nav-brown;
   position: relative;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
 
   .photo-layer {
     background: url('../../../assets/images/menu_image.png');
@@ -20,7 +22,6 @@
     list-style-type: none;
     color: white;
     height: 100%;
-    padding: 0 160px;
     margin: 0;
     display: -webkit-box;
     display: -moz-box;
@@ -35,23 +36,22 @@
       font-weight: normal;
       font-family: $font-open-sans;
       color: $white;
-      padding: 0 25px;
+      padding: 0 5px;
       .nav-link {
         //padding-right: 20px;
         color: $white;
       }
     }
-    .button-group {
-
-      @include respondTo($device-xxxl) {
-        padding-left: 150px;
-      }
-      .button-white-transparent {
-        margin-left: 25px;
-      }
-    }
   }
-
+  app-user-panel {
+    width: 100%;
+  }
+  .user-panel {
+    display: flex;
+    align-items: center;
+    //justify-content: flex-end;
+    //padding: 0 40px;
+  }
 }
 
 

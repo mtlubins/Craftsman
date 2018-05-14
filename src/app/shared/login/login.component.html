@@ -33,9 +33,9 @@
                  (mouseleave)="hidePassword()">
               <use xlink:href="/assets/images/vectors/eye_icon.svg#eyeico"></use>
             </svg>
+            <app-field-validator *ngIf="fieldValidationService.cantTouchThis(password)"
+                                 [errors]="password.errors"></app-field-validator>
           </label>
-          <app-field-validator *ngIf="fieldValidationService.cantTouchThis(password)"
-                               [errors]="password.errors"></app-field-validator>
         </div>
       </form>
       <div class="login-button-group form-group-ext">

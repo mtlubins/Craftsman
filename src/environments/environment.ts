@@ -5,11 +5,15 @@
 
 export const environment = {
   production: false,
-  API_PATH: 'http://localhost:3000',
-  CRAFTSMEN_PATH: '/craftsmen',
-  USER_PATH: '/user',
-  USER_PROFILE_PATH: '/me',
-  LOGIN_PATH: '/auth/login',
-  PROFILE_PATH: '/me',
-  ERROR_PATH: '/auth/error'
+  endpoints: {
+    apiPath: 'http://localhost:3000',
+    craftsmanPath: '/craftsmen',
+    userPath: '/user',
+    userProfilePath: '/me',
+    loginPath: '/auth/login'
+  },
+  routerPaths: {
+    userEnrollment: 'user',
+    craftsmanEnrollment: 'craftsman'
+  }
 };

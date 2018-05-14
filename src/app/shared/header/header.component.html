@@ -1,14 +1,28 @@
 <nav class="container-fluid header-container">
-  <div class="photo-layer">
-  <ul class="nav-container">
-    <li class="nav-item">
-      <a class="nav-link" routerLink="my-account">My profile</a>
-    </li>
-    <li class="nav-item button-group">
-      <a routerLink="login"><button class="button-transparent-white">Zaloguj się</button></a>
-      <a routerLink="join-us"><button class="button-white-transparent">Rejestracja</button></a>
-    </li>
-  </ul>
+  <div class="row photo-layer">
+    <div class="col-md-2 center-align">
+      LOGO
+    </div>
+    <div class="col-md-6">
+      <ul class="nav-container">
+        <li class="nav-item">
+          <a class="nav-link" routerLink="my-account">My profile</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="my-account">Znajdź rzmieślnika</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="my-account">Dodaj zlecenie</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="my-account">Profile Rzemieślników</a>
+        </li>
+      </ul>
+    </div>
+    <div class="col-md-4 user-panel">
+     <app-user-panel></app-user-panel>
+    </div>
+
   </div>
 </nav>
 

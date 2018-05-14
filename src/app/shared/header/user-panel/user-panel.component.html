@@ -1,0 +1,43 @@
+<div *ngIf="userData; then login else loggedOut"></div>
+<ng-template #login>
+  <div class="button-group">
+
+
+
+      <div class="btn-group" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        <!--<span class="user-name">{{userData.firstName}} {{userData.lastName}}</span>-->
+        <!--<button type="button" class="arrow dropdown-toggle dropdown-toggle-split"-->
+                <!--data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">-->
+          <!--<span class="sr-only">Toggle Dropdown</span>-->
+        <!--</button>-->
+        <button class="btn user-name" type="button">
+          {{userData.firstName}} {{userData.lastName}}
+        </button>
+        <div class="dropdown-toggle dropdown-toggle-split">
+        </div>
+        <div class="dropdown-menu" aria-labelledby="dropdownMenuReference">
+          <a class="dropdown-item" href="#">Action</a>
+          <a class="dropdown-item" href="#">Another action</a>
+          <a class="dropdown-item" href="#">Something else here</a>
+          <div class="dropdown-divider"></div>
+          <a class="dropdown-item" href="#">Separated link</a>
+        </div>
+      </div>
+
+    <button class="button-transparent-white" (click)="logout()">Wyloguj się</button>
+
+  </div>
+</ng-template>
+<ng-template #loggedOut>
+  <div class="button-group">
+    <a class="login-link" routerLink="login">
+      <button class="button-transparent-white">Zaloguj się</button>
+    </a>
+    <a routerLink="join-us">
+      <button class="button-white-transparent">Rejestracja</button>
+    </a>
+  </div>
+</ng-template>
+
+
+

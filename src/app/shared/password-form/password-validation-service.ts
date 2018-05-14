@@ -1,5 +1,5 @@
 import {Injectable} from '@angular/core';
-import {passwordStrenght} from './password-strength';
+import {IPasswordStrength} from './password-strength';
 
 @Injectable()
 export class PasswordValidationService {
@@ -32,12 +32,12 @@ export class PasswordValidationService {
       .length >= minLowercaseCharNumber;
   }
 
-  public calculatePasswordStrength(password: string): number {
+  public calculatePasswordStrength(password: string): IPasswordStrength {
     if (this.countLength(password, 9)
         && this.countSpecialChar(password, 3)
         && this.countUppercaseChar(password, 1)
         && this.countLowercaseChar(password, 1)) {
-      return passwordStrenght.strong;
+      return {value: 100, name: 'silne!'};
      } else if ((this.countLength(password, 8)
           && this.countSpecialChar(password, 1)
           && this.countUppercaseChar(password, 1)
@@ -46,13 +46,13 @@ export class PasswordValidationService {
           && this.countSpecialChar(password, 1)
           && this.countUppercaseChar(password, 1)
           && this.countLowercaseChar(password, 1)) ) {
-      return passwordStrenght.good;
+      return {value: 75, name: 'dobre.'};
     } else if (this.countLength(password, 6)
       && this.countSpecialChar(password, 1)
       && this.countUppercaseChar(password, 1)) {
-      return  passwordStrenght.weak;
+      return {value: 50, name: 'słabe..'};
     } else {
-      return passwordStrenght.tooWeak;
+      return {value: 25, name: 'za słabe...'};
     }
   }
 

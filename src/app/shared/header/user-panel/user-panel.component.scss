@@ -1,0 +1,100 @@
+@import '../../../../assets/styles/buttons';
+
+.button-group {
+  display: flex;
+  color: $white;
+  justify-content: flex-end;
+  padding: 0 50px;
+
+  .btn-group {
+
+    margin-right: 6%;
+
+    &:hover .dropdown-toggle {
+      background-color: $white;
+    }
+    &:hover .dropdown-toggle::after {
+      color: $nav-brown;
+    }
+
+    &:hover .user-name {
+      background: $white;
+      color: $nav-brown;
+    }
+
+    .user-name {
+      &:focus, &:active, &:hover {
+        // box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(255, 0, 0, 0.6);
+        box-shadow: none;
+      }
+      background: transparent;
+      cursor: auto;
+      color: $white;
+      border-left: 0;
+      border-top: 0;
+      border-right: 0;
+      border-bottom: $button-border-size solid $white;
+      min-width: 200px;
+      -webkit-transition: all $transition-time-desktop;
+      -moz-transition: all $transition-time-desktop;
+      -o-transition: all $transition-time-desktop;
+      transition: all $transition-time-desktop;
+    }
+
+    .dropdown-toggle-split {
+      &:focus, &:active, &:hover {
+
+        // box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(255, 0, 0, 0.6);
+        box-shadow: none;
+      }
+    }
+
+    .dropdown-toggle {
+      display: flex;
+      align-items: center;
+      &:focus, &:active, &:hover {
+
+        // box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(255, 0, 0, 0.6);
+        box-shadow: none;
+      }
+      background-color: transparent;
+      border-top: $button-border-size solid $white;
+      border-right: $button-border-size solid $white;
+      border-bottom: $button-border-size solid $white;
+      border-top: 0;
+      border-left: 0;
+      border-top-right-radius: 15px;
+      border-bottom-right-radius: 15px;
+      min-width: 50px;
+      -webkit-transition: all $transition-time-desktop;
+      -moz-transition: all $transition-time-desktop;
+      -o-transition: all $transition-time-desktop;
+      transition: all $transition-time-desktop;
+    }
+  }
+
+  .dropdown-menu {
+    min-width: 250px;
+  }
+
+  .dropdown-toggle::after {
+    color: $white;
+    border-top: .4em solid;
+    border-right: .4em solid transparent;
+    border-bottom: 0;
+    border-left: .4em solid transparent;
+  }
+}
+
+.panel-group-button {
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+  color: $white;
+
+}
+
+
+.login-link {
+  margin-right: 6%;
+}

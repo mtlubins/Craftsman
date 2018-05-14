@@ -1,8 +1,6 @@
 <div class="container registration-container">
   <div class="row">
     <div class="registration-headers col-md-12">
-      <span class="yellow-header">Formularz rejestracyjny</span>
-      <h3 class="join-us-header">Zarejestruj się u nas!</h3>
       <span class="yellow-header">Zleceniodawca</span>
     </div>
   </div>
@@ -48,12 +46,20 @@
         </div>
         <div class="form-group-ext">
           <label class="form-label-ext">Miasto
-            <input class="form-control form-control-ext" formControlName="city">
+            <input class="form-control form-control-ext"
+                   [ngClass]="{'invalid-border': city.errors && fieldValidationService.cantTouchThis(city)}"
+                   formControlName="city">
+            <app-field-validator *ngIf="fieldValidationService.cantTouchThis(city)"
+                                 [errors]="city.errors"></app-field-validator>
           </label>
         </div>
         <div class="form-group-ext">
           <label class="form-label-ext">Ulica
-            <input class="form-control form-control-ext" formControlName="street">
+            <input class="form-control form-control-ext"
+                   [ngClass]="{'invalid-border': street.errors && fieldValidationService.cantTouchThis(street)}"
+                   formControlName="street">
+            <app-field-validator *ngIf="fieldValidationService.cantTouchThis(street)"
+                                 [errors]="street.errors"></app-field-validator>
           </label>
         </div>
         <div class="form-group-ext">
@@ -68,9 +74,9 @@
         </div>
       </form>
       <div class="form-group-ext">
-        <div class="form-control-ext">
+        <div class="form-control-ext flex-container">
           <button (click)="send()" class="button-yellow-white">Zarejestruj</button>
-          <span class="account-question">Masz już konto? <a [routerLink]="['/login']">Zaloguj się!</a></span>
+          <div class="account-question">Masz już konto? <a [routerLink]="['/login']">Zaloguj się!</a></div>
         </div>
       </div>
     </div>

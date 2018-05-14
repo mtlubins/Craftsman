@@ -2,19 +2,21 @@ import {Component, OnInit} from '@angular/core';
 import {FormBuilder, FormControl, FormGroup, ValidationErrors, Validators} from '@angular/forms';
 import {FieldValidationService} from '../field-validator/field-validation.service';
 import {PasswordValidationService} from './password-validation-service';
-import {passwordStrenght} from './password-strength';
+import {IPasswordStrength} from './password-strength';
 
 @Component({
   selector: 'app-password-form',
   templateUrl: './password-form.component.html',
   styleUrls: ['./password-form.component.scss']
 })
+
 export class PasswordFormComponent implements OnInit {
 
   public passwordForm: FormGroup;
   public passwordVisible: boolean;
   public confirmPasswordVisible: boolean;
-  public passwordStrength: number;
+  public passwordStrength: IPasswordStrength;
+  public passwordColor: string;
 
   constructor (private fb: FormBuilder,
                public fieldValidationService: FieldValidationService,
@@ -47,6 +49,8 @@ export class PasswordFormComponent implements OnInit {
   onPasswordChanges(): void {
     this.password.valueChanges.subscribe(val => {
       this.passwordStrength = this.passwordValidationService.calculatePasswordStrength(val);
+      this.passwordColor = this.establishPasswordStrengthColor();
+      console.log(this.passwordColor);
     });
   }
 
@@ -71,12 +75,27 @@ export class PasswordFormComponent implements OnInit {
 
   public passwordStrengthValidation(passwordControl: FormControl): ValidationErrors {
     const password = passwordControl.value;
-    if (password && this.passwordValidationService.calculatePasswordStrength(password) === passwordStrenght.tooWeak) {
+    if (password && this.passwordValidationService.calculatePasswordStrength(password).value === 25) {
       return {
         tooWeakPassword: true
       };
     }
     return null;
+  }
+
+  establishPasswordStrengthColor(): string {
+    switch (this.passwordStrength.value) {
+      case 25:
+            return 'too-weak';
+      case 50:
+        return 'weak';
+      case 75:
+        return 'good';
+      case 100:
+        return 'strong';
+      default:
+            return 'tooWeak';
+    }
   }
 
   get password() {

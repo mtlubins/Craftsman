@@ -1,9 +1,21 @@
 @import './variables';
 @mixin button($normal-state: (), $hover: ()) {
-  $normal-default-values: (background-color: white, color: black, text-decoration: none,
-    min-width: 180px, min-height: 45px, cursor: pointer, font-family: $font-open-sans, font-size: $font-button-size,
-    border: 2px solid white);
-  $hover-default-values: (background-color: black, color: white, text-decoration: none);
+  $normal-default-values: (
+    background-color: $white,
+    color: $black,
+    text-decoration: none,
+    min-width: 160px,
+    max-width: 160px,
+    min-height: 45px,
+    cursor: pointer,
+    font-family: $font-open-sans,
+    font-size: $font-button-size,
+    border: 2px solid $white,
+    border-radius: 10px
+  );
+  $hover-default-values: (
+    text-decoration: none
+  );
 
   $normal-state-map: map_merge($normal-default-values, $normal-state);
   $hover-map: map-merge($hover-default-values, $hover);

@@ -1,0 +1,16 @@
+@import '../../../assets/styles/variables';
+.registration-headers {
+  display: block;
+  margin-right: auto;
+  margin-left: auto;
+  font-family: $font-open-sans;
+  text-align: center;
+  .join-us-header {
+    font-size: $font-main-headers;
+    padding: 40px 0;
+  }
+  .yellow-header {
+    color: $dirty-yellow;
+    font-size: $font-semi-headers;
+  }
+}

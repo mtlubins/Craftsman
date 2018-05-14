@@ -11,7 +11,7 @@ export class CraftsmenResourceService {
   constructor(private httpService: BaseHttpService) {}
 
   getCraftsmen(): Observable<ICraftsman[]> {
-    const url = environment.API_PATH + environment.CRAFTSMEN_PATH;
+    const url = environment.endpoints.apiPath + environment.endpoints.craftsmanPath;
     return this.httpService.get<ICraftsman[]>(url)
       .catch(err => BaseHttpService.handleHttpError(err));
   }

@@ -1,12 +1,9 @@
-<div class="container-fluid">
-  <div class="row">
-    <div class="col-md-12 registration-headers">
-      <span class="yellow-header">Formularz rejestracyjny</span>
-      <h3 class="join-us-header">Zarejestruj się u nas!</h3>
-    </div>
-  </div>
-  <div class="row selection-container">
-      <div (click)="enrollUser()" class="user">
+import {Component} from '@angular/core';
+// import {environment} from '../../../environments/environment';
+@Component({
+  template: `
+    <div class="row selection-container">
+      <div [routerLink]="['user']" class="user">
         <div class="photo-layer-user">
           <svg class="craftsman-icon">
             <use xlink:href="/assets/images/vectors/user_icon.svg#userico"></use>
@@ -14,7 +11,7 @@
           <p class="craftsman-text">Zarejestruj się jako zleceniodawca</p>
         </div>
       </div>
-      <div (click)="enrollCraftsman()" class="craftsman">
+      <div [routerLink]="['craftsman']" class="craftsman">
         <div class="photo-layer-craftsman">
           <svg class="craftsman-icon">
             <use xlink:href="/assets/images/vectors/craftsman_icon.svg#crafico"></use>
@@ -22,7 +19,11 @@
           <p class="craftsman-text">Zarejestruj się jako rzemieślnik</p>
         </div>
       </div>
-  </div>
-</div>
-
-
+    </div>
+  `,
+  styleUrls: ['./join-us-nav.component.scss']
+})
+export class JoinUsNavComponent {
+  // TO DO: routerPaths environments instead of hardcoded links
+  // public dupa = environment.routerPaths.userEnrollment;
+}

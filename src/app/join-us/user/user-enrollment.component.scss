@@ -7,33 +7,36 @@
   margin-left: auto;
   margin-right: auto;
   font-family: $font-open-sans;
-  margin-bottom: 50px;
+  margin-bottom: 100px;
   a {
     color: $dirty-yellow;
   }
-
   .registration-headers {
+    display: block;
+    margin-right: auto;
+    margin-left: auto;
+    font-family: $font-open-sans;
     text-align: center;
-    .join-us-header {
-      font-size: $font-main-headers;
-      padding: 40px 0;
-    }
     .yellow-header {
       color: $dirty-yellow;
       font-size: $font-semi-headers;
     }
   }
+  .flex-container {
+    margin-top: 50px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
   .button-yellow-white {
     $white-yellow: (
-      normal-state: (background-color: $dirty-yellow, border: $button-border-size solid $dirty-yellow, color: white, min-width: 220px, margin-top: 30px),
+      normal-state: (background-color: $dirty-yellow, border: $button-border-size solid $dirty-yellow, color: white, min-width: 180px, max-width: 180px),
       hover: (background-color: white, border: $button-border-size solid $dirty-yellow, color: $dirty-yellow)
     );
     @include button($white-yellow...);
   }
 
-  .account-question {
-    margin-left: 20px;
-  }
   .private-policy {
     margin-left: 35px;
   }

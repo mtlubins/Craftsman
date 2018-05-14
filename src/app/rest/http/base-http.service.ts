@@ -40,19 +40,19 @@ export class BaseHttpService implements IHttpService {
         return this.request<T>('get', url);
     }
 
-    post<T>(url: string, body: any) {
+    post<T>(url: string, body: any): Observable<T>  {
         return this.request<T>('post', url, body);
     }
 
-    put<T>(url: string, body: any) {
+    put<T>(url: string, body: any): Observable<T>  {
         return this.request<T>('put', url, body);
     }
 
-    patch<T>(url: string, body: any) {
+    patch<T>(url: string, body: any): Observable<T>  {
         return this.request<T>('patch', url, body);
     }
 
-    delete<T>(url: string, body: any) {
+    delete<T>(url: string, body: any): Observable<T>  {
         return this.request<T>('delete', url, body);
     }
 }

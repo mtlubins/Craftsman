@@ -1,6 +1,8 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnInit, ViewContainerRef} from '@angular/core';
 import {ActivatedRoute} from '@angular/router';
 import {AccountResourceService} from '../../../rest/resources/account-resource/account-resource.service';
+import {ToastsManager} from 'ng2-toastr';
+import {IHttpError} from '../../../rest/http/http-error.interface';
 
 @Component({
   selector: 'app-user-profile',
@@ -9,12 +11,16 @@ import {AccountResourceService} from '../../../rest/resources/account-resource/a
 })
 export class UserProfileComponent implements OnInit {
   public userData: any;
-  constructor(private route: ActivatedRoute,
-              private accountService: AccountResourceService) {}
+  constructor(private userService: AccountResourceService,
+              private toastr: ToastsManager,
+              vcr: ViewContainerRef) {}
 
   ngOnInit() {
-    // this.userData = this.route.snapshot.data['resolvedProfileData'];
-    // console.log(this.userData);
-    this.accountService.getProfile().subscribe(response => console.log(response), error => console.log(error) );
+    this.userService.getProfile().subscribe(
+      response => this.userData = response,
+      (err: IHttpError) => {
+        this.toastr.error(err.userMessage, 'Ooops!');
+      }
+    );
   }
 }
