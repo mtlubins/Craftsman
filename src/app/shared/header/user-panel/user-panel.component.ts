@@ -18,6 +18,7 @@ export class UserPanelComponent implements OnInit {
         console.log(this.userData);
       });
   }
+
   logout() {
     this.authService.logout();
   }

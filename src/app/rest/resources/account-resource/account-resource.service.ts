@@ -4,7 +4,6 @@ import {environment} from '../../../../environments/environment';
 import {IUser} from '../../../shared/models/user.interface';
 import {Observable} from 'rxjs/Observable';
 import {IHttpError} from '../../http/http-error.interface';
-import {ILoggedUserData} from '../../../shared/models/logged-user-data.interface';
 import {LoggedUserStorageService} from '../../../shared/storage/logged-user-storage.service';
 import {JwtStorageService} from '../../../shared/storage/jwt-storage.service';
 

@@ -11,9 +11,11 @@ import {IHttpError} from '../../../rest/http/http-error.interface';
 })
 export class UserProfileComponent implements OnInit {
   public userData: any;
+
   constructor(private userService: AccountResourceService,
               private toastr: ToastsManager,
-              vcr: ViewContainerRef) {}
+              vcr: ViewContainerRef) {
+  }
 
   ngOnInit() {
     this.userService.getProfile().subscribe(

@@ -7,4 +7,5 @@ export interface IUser {
   city: string;
   street: string;
   terms: boolean;
+  craftsmen: boolean;
 }

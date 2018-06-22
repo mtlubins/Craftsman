@@ -1,1 +1,84 @@
-CHUI
+<div class="container registration-container">
+  <div class="row">
+    <div class="registration-headers col-md-12">
+      <span class="yellow-header">Rzemieślnik</span>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-12">
+      <form [formGroup]="enrollmentForm">
+        <div class="form-group-ext">
+          <label class="margin-top form-label-ext">Imię
+            <input class="form-control form-control-ext"
+                   [ngClass]="{'invalid-border': firstName.errors && fieldValidationService.isControlTouched(firstName)}"
+                   formControlName="firstName">
+            <app-field-validator *ngIf="fieldValidationService.isControlTouched(firstName)"
+                                 [errors]="firstName.errors"></app-field-validator>
+          </label>
+        </div>
+        <div class="form-group-ext">
+          <label class="form-label-ext">Nazwisko
+            <input class="form-control form-control-ext"
+                   [ngClass]="{'invalid-border': lastName.errors && fieldValidationService.isControlTouched(lastName)}"
+                   formControlName="lastName">
+            <app-field-validator *ngIf="fieldValidationService.isControlTouched(lastName)"
+                                 [errors]="lastName.errors"></app-field-validator>
+          </label>
+        </div>
+        <div class="form-group-ext">
+          <label class="form-label-ext">E-mail
+            <input class="form-control form-control-ext"
+                   [ngClass]="{'invalid-border': email.errors && fieldValidationService.isControlTouched(email)}"
+                   formControlName="email">
+            <app-field-validator *ngIf="fieldValidationService.isControlTouched(email)"
+                                 [errors]="email.errors"></app-field-validator>
+          </label>
+        </div>
+        <app-password-form #passwordForm></app-password-form>
+        <div class="form-group-ext">
+          <label class="form-label-ext">Numer telefonu
+            <input class="form-control form-control-ext"
+                   [ngClass]="{'invalid-border': phone.errors && fieldValidationService.isControlTouched(phone)}"
+                   formControlName="phone">
+            <app-field-validator *ngIf="fieldValidationService.isControlTouched(phone)"
+                                 [errors]="phone.errors"></app-field-validator>
+          </label>
+        </div>
+        <div class="form-group-ext">
+          <label class="form-label-ext">Miasto
+            <input class="form-control form-control-ext"
+                   [ngClass]="{'invalid-border': city.errors && fieldValidationService.isControlTouched(city)}"
+                   formControlName="city">
+            <app-field-validator *ngIf="fieldValidationService.isControlTouched(city)"
+                                 [errors]="city.errors"></app-field-validator>
+          </label>
+        </div>
+        <div class="form-group-ext">
+          <label class="form-label-ext">Ulica
+            <input class="form-control form-control-ext"
+                   [ngClass]="{'invalid-border': street.errors && fieldValidationService.isControlTouched(street)}"
+                   formControlName="street">
+            <app-field-validator *ngIf="fieldValidationService.isControlTouched(street)"
+                                 [errors]="street.errors"></app-field-validator>
+          </label>
+        </div>
+        <div class="form-group-ext">
+          <label class="checkbox-container">
+            <input type="checkbox" formControlName="terms">
+            <span class="checkmark" [ngClass]="{'invalid-border': terms.errors && fieldValidationService.isControlTouched(terms)}"></span>
+          </label>
+          <span class="private-policy">Zgadzam się z
+            <a [routerLink]="['/terms-conditions']">Warunkami użytkowania i Polityką prywatności</a></span>
+          <app-field-validator *ngIf="fieldValidationService.isControlTouched(terms)"
+                               [errors]="terms.errors"></app-field-validator>
+        </div>
+      </form>
+      <div class="form-group-ext">
+        <div class="form-control-ext flex-container">
+          <button (click)="send()" class="button-yellow-white">Zarejestruj</button>
+          <div class="account-question">Masz już konto? <a [routerLink]="['/login']">Zaloguj się!</a></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

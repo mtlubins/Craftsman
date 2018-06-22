@@ -28,10 +28,10 @@ export class UserEnrollmentComponent {
 }
 
   send() {
-    this.fieldValidationService.cantTouchTheForm(this.enrollmentForm);
+    this.fieldValidationService.markFormAsTouched(this.enrollmentForm);
     const passwordData = this.passwordForm.submitForm();
     if (passwordData && this.enrollmentForm.valid) {
-      const userToCreate: IUser = Object.assign({}, passwordData, this.enrollmentForm.value);
+      const userToCreate: IUser = Object.assign({}, passwordData, this.enrollmentForm.value, {craftsmen: false});
       this.accountService.createUser(userToCreate)
         .subscribe(
           (response) => {
@@ -54,7 +54,7 @@ export class UserEnrollmentComponent {
         Validators.required,
         Validators.email
       ])],
-      phone: ['', Validators.compose([Validators.pattern(/^-?(0|[1-9]\d*)?$/), Validators.required])],
+      phone: ['', Validators.compose([Validators.pattern(/^-?(0|[1-9]\d*)?$/)])],
       city: ['', Validators.required],
       street: ['', Validators.required],
       terms: ['', Validators.requiredTrue],

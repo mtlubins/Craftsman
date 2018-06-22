@@ -14,7 +14,6 @@ import {ToastsManager} from 'ng2-toastr';
 })
 export class LoginComponent implements OnInit {
   loginForm: FormGroup;
-  public token: any;
   public passwordVisible: boolean;
 
   constructor(private fb: FormBuilder,
@@ -31,13 +30,12 @@ export class LoginComponent implements OnInit {
   }
 
   logIn() {
-    this.fieldValidationService.cantTouchTheForm(this.loginForm);
+    this.fieldValidationService.markFormAsTouched(this.loginForm);
     if (this.loginForm.valid) {
       const loginData: ICustomerCredentials = {
         email: this.loginForm.value.email,
         password: this.loginForm.value.password
       };
-      console.log(loginData);
       this.authService.login(loginData)
         .subscribe(() => {
           this.router.navigateByUrl('/my-account');

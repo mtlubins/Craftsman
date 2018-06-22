@@ -1,5 +1,14 @@
-My-Profile works!
-<div *ngFor="let entry of userData | displayObj ">
-  {{entry.key}} {{entry.value}}
+<div class="user-profile-container">
+  <!--<h1>My-Profile works!</h1>-->
+  <!--<div *ngFor="let entry of userData | displayObj ">-->
+    <!--{{entry.key}} {{entry.value}}-->
+  <!--</div>-->
+  <div class="my-profile left-side">
+    <div><img src="../../../../assets/images/hitman.jpg" class="profile-image"></div>
+    <span>{{userData['firstName']}}</span>
+  </div>
+  <div class="my-profile right-side">
+  </div>
 </div>
+
 

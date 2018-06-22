@@ -2,7 +2,7 @@ import {Component} from '@angular/core';
 // import {environment} from '../../../environments/environment';
 @Component({
   template: `
-    <div class="row selection-container">
+    <div class="selection-container">
       <div [routerLink]="['user']" class="user">
         <div class="photo-layer-user">
           <svg class="craftsman-icon">

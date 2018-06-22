@@ -30,8 +30,8 @@ export class PasswordFormComponent implements OnInit {
   }
 
   submitForm() {
-    this.fieldValidationService.cantTouchTheControl(this.password);
-    this.fieldValidationService.cantTouchTheControl(this.confirmPassword);
+    this.fieldValidationService.markedControlAsTouched(this.password);
+    this.fieldValidationService.markedControlAsTouched(this.confirmPassword);
     if (this.passwordForm.valid) {
       return {password: this.password.value};
     }

@@ -12,10 +12,10 @@
         <div class="form-group-ext">
           <label class="form-label-ext">Login
             <input class="form-control form-control-ext"
-                   [ngClass]="{'invalid-border': email.errors && fieldValidationService.cantTouchThis(email)}"
+                   [ngClass]="{'invalid-border': email.errors && fieldValidationService.isControlTouched(email)}"
                    formControlName="email"
                    placeholder="Login lub E-mail">
-            <app-field-validator *ngIf="fieldValidationService.cantTouchThis(email)"
+            <app-field-validator *ngIf="fieldValidationService.isControlTouched(email)"
                                  [errors]="email.errors"></app-field-validator>
           </label>
         </div>
@@ -24,7 +24,7 @@
           <label class="form-label-ext inner-addon">Hasło
             <input class="form-control form-control-ext"
                    [attr.type]="passwordVisible ? 'text' : 'password'"
-                   [ngClass]="{'invalid-border': password.errors && fieldValidationService.cantTouchThis(password)}"
+                   [ngClass]="{'invalid-border': password.errors && fieldValidationService.isControlTouched(password)}"
                    formControlName="password"
                    placeholder="Hasło">
             <svg class="show-password-icon"
@@ -33,7 +33,7 @@
                  (mouseleave)="hidePassword()">
               <use xlink:href="/assets/images/vectors/eye_icon.svg#eyeico"></use>
             </svg>
-            <app-field-validator *ngIf="fieldValidationService.cantTouchThis(password)"
+            <app-field-validator *ngIf="fieldValidationService.isControlTouched(password)"
                                  [errors]="password.errors"></app-field-validator>
           </label>
         </div>
@@ -49,7 +49,6 @@
           <span class="account-question">Nie masz jeszcze konta? <a [routerLink]="['/join-us']">Zarejestruj się!</a></span>
         </div>
       </div>
-      <div>{{token}}</div>
     </div>
   </div>
 </div>

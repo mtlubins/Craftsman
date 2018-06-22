@@ -9,6 +9,7 @@ import {UserAccountModule} from './my-account/user-account.module';
 import {ReactiveFormsModule} from '@angular/forms';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {ToastModule} from 'ng2-toastr';
+import { Ng2FileDropModule } from 'ng2-file-drop';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,8 @@ import {ToastModule} from 'ng2-toastr';
     RestLayerModule,
     SharedModule,
     UserAccountModule,
-    ToastModule.forRoot()
+    ToastModule.forRoot(),
+    Ng2FileDropModule
   ],
   providers: [],
   bootstrap: [AppComponent]
