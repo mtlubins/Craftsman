@@ -7,11 +7,50 @@
   .my-profile {
     padding-left: 15%;
   }
+  .user-main-info {
+    display: flex;
+  }
+  hr {
+    margin: 40px 0;
+    border: 0;
+    height: 0;
+    width: 50%;
+    border-top: 1px solid rgba(0, 0, 0, 0.1);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+  }
 
-  .profile-image {
-    max-width: 150px;
-    max-height: 200px;
-    border-radius: 100%;
-    object-fit: cover;
+  .left-side {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+
+    .avatar-container {
+      display: inline-block;
+      background: url("../../../../assets/images/hitman.jpg") no-repeat;
+      background-size: cover;
+      overflow:hidden;
+      -webkit-border-radius:50%;
+      -moz-border-radius:50%;
+      border-radius:50%;
+      width: 150px;
+      height: 150px;
+
+      -webkit-box-shadow: 5px 5px 5px rgba(108,110,117,1);
+      -moz-box-shadow: 5px 5px 35px rgba(108,110,117,1);
+      box-shadow: 5px 5px 35px rgba(108,110,117,1);
+    }
+
+    .user-introduction {
+      display: flex;
+      flex-direction: column;
+      padding-top: 20px;
+      padding-left: 40px;
+    }
+
+    .user-name {
+      font-size: 24px;
+      font-weight: bold;
+      display: block;
+    }
   }
 }
