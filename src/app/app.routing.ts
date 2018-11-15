@@ -4,6 +4,12 @@ import {UserProfileComponent} from './my-account/user-profile/component/user-pro
 import {ErrorOccurredComponent} from './shared/error-occurred/error-occurred.component';
 import {AuthGuard} from './rest/auth/auth.guard';
 import {HomepageComponent} from './shared/homepage/homepage.component';
+import { JoinUsModule} from './join-us/join-us.module';
+import {SearchComponent} from './shared/search/serach.component';
+
+export function loadJoinUsModule() {
+  return JoinUsModule;
+}
 
 const APP_ROUTES: Routes = [
   {
@@ -21,7 +27,11 @@ const APP_ROUTES: Routes = [
   },
   {
     path: 'join-us',
-    loadChildren: './join-us/join-us.module#JoinUsModule'
+    loadChildren: loadJoinUsModule
+  },
+  {
+    path: 'search-craftsman',
+    component: SearchComponent
   },
   {
     path: 'error-occurred',

@@ -1,6 +1,13 @@
 {
   "compileOnSave": false,
-  "include": [ "src/**/*", "node_modules/ng2-file-drop/**/*.ts", "node_modules/tslerp/**/*.ts" ],
+  "angularCompilerOptions": {
+    "enableIvy": true
+  },
+  "include": [
+    "src/**/*",
+    "node_modules/ng2-file-drop/**/*.ts",
+    "node_modules/tslerp/**/*.ts"
+  ],
   "compilerOptions": {
     "outDir": "./dist/out-tsc",
     "sourceMap": true,
@@ -15,6 +22,11 @@
     "lib": [
       "es2017",
       "dom"
-    ]
+    ],
+    "module": "es2015",
+    "baseUrl": "./",
+    "paths": {
+      "@angular/*": ["node_modules/@angular/*"]
+    }
   }
 }

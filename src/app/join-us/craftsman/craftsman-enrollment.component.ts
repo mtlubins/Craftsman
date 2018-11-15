@@ -3,7 +3,7 @@ import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {FieldValidationService} from '../../shared/field-validator/field-validation.service';
 import {AccountResourceService} from '../../rest/resources/account-resource/account-resource.service';
 import {IUser} from '../../shared/models/user.interface';
-import {ToastsManager} from 'ng2-toastr';
+import {ToastsManager} from 'ng6-toastr';
 import {JwtStorageService} from '../../shared/storage/jwt-storage.service';
 import {Router} from '@angular/router';
 
@@ -39,7 +39,10 @@ export class CraftsmanEnrollmentComponent {
             this.jwtStorage.setToken(response.access_token);
             this.router.navigateByUrl('/my-account');
           },
-          (err) => this.toastr.error(err)
+          (err) => {
+            this.toastr.error(err);
+            console.log(err);
+          }
         );
     } else {
       this.toastr.error('This is not good lord! The form is broken :(', 'Oops!');

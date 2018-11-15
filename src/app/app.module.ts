@@ -3,30 +3,25 @@ import { NgModule } from '@angular/core';
 import { AppComponent } from './app.component';
 import {RestLayerModule} from './rest/rest-layer.module';
 import {SharedModule} from './shared/shared.module';
-import {RouterModule} from '@angular/router';
 import {AppRouterModule} from './app.routing';
 import {UserAccountModule} from './my-account/user-account.module';
 import {ReactiveFormsModule} from '@angular/forms';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
-import {ToastModule} from 'ng2-toastr';
-import { Ng2FileDropModule } from 'ng2-file-drop';
+import {ToastModule} from 'ng6-toastr';
 
 @NgModule({
-  declarations: [
-    AppComponent
-  ],
   imports: [
     BrowserModule,
-    BrowserAnimationsModule,
-    RouterModule,
     AppRouterModule,
+    BrowserAnimationsModule,
     ReactiveFormsModule,
-
     RestLayerModule,
     SharedModule,
     UserAccountModule,
     ToastModule.forRoot(),
-    Ng2FileDropModule
+  ],
+  declarations: [
+    AppComponent
   ],
   providers: [],
   bootstrap: [AppComponent]

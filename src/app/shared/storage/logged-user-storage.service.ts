@@ -1,9 +1,7 @@
 import {Injectable} from '@angular/core';
 import {LocaleStorageService} from './local-storage.service';
 import {ILoggedUserData} from '../models/logged-user-data.interface';
-import {Observable} from 'rxjs/Observable';
-import 'rxjs/add/observable/of';
-import {BehaviorSubject} from 'rxjs/BehaviorSubject';
+import {Observable, BehaviorSubject} from 'rxjs';
 
 @Injectable()
 export class LoggedUserStorageService {
@@ -12,12 +10,12 @@ export class LoggedUserStorageService {
   private userDataSource = new BehaviorSubject<ILoggedUserData>(this.getUserData());
   public userData$: Observable<ILoggedUserData> = this.userDataSource.asObservable();
 
-  setUserData(userData: ILoggedUserData) {
+  setUserData(userData: any | ILoggedUserData) {
     this.userDataSource.next(userData);
     this.storageService.setItem('USER_DATA', userData);
   }
 
-  getUserData(): ILoggedUserData {
+  getUserData(): any | ILoggedUserData {
     return this.storageService.getItem('USER_DATA');
   }
 

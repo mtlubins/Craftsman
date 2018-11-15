@@ -18,11 +18,13 @@ import {LoggedUserStorageService} from './storage/logged-user-storage.service';
 import {UserPanelComponent} from './header/user-panel/user-panel.component';
 import {MapErrorsPipe} from './pipes/map-errors.pipe';
 import {HomepageComponent} from './homepage/homepage.component';
+import {AgmCoreModule} from '@agm/core';
+import {SearchComponent} from './search/serach.component';
 
 const MODULE_COMPONENTS = [
   LoginComponent, HeaderComponent, ErrorOccurredComponent,
   FooterComponent, FieldValidatorComponent, PasswordFormComponent, UserPanelComponent,
-  HomepageComponent
+  HomepageComponent, SearchComponent
 ];
 
 const MODULE_PIPES = [
@@ -34,7 +36,14 @@ const MODULE_PROVIDERS = [
 ];
 
 @NgModule({
-  imports: [RouterModule, CommonModule, ReactiveFormsModule],
+  imports: [
+    RouterModule,
+    CommonModule,
+    ReactiveFormsModule,
+    AgmCoreModule.forRoot({
+      apiKey: 'AIzaSyBtE9Gmh8nQDVfzrC9OwbKVa-9dOMuMlUc'
+    }),
+  ],
   declarations : [...MODULE_COMPONENTS, ...MODULE_PIPES],
   exports: [...MODULE_COMPONENTS, ...MODULE_PIPES],
   providers: [...MODULE_PROVIDERS]

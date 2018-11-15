@@ -7,17 +7,36 @@
     <div class="user-main-info">
       <div class="avatar-container"></div>
       <div class="user-introduction">
-        <p class="user-name">{{userData['firstName']}}  {{userData['lastName']}}</p>
-        <p>Architekt</p>
+        <p class="user-name">{{userData?.firstName}}  {{userData?.lastName}}</p>
+        <p>Zamockowany Architekt</p>
       </div>
     </div>
     <hr>
     <div class="personal-data">
-      Moje Dane
+      <h4 class="section-title">Moje Dane</h4>
+      <div class="row profile-item">
+        <div class="col-md-6">Miasto</div>
+        <div class="col-md-6">{{userData?.city}}</div>
+      </div>
+      <div class="row profile-item">
+        <div class="col-md-6">Ulica</div>
+        <div class="col-md-6">{{userData?.street}}</div>
+      </div>
+      <div class="row profile-item">
+        <div class="col-md-6">Numer telefonu</div>
+        <div class="col-md-6">{{userData?.phone}}</div>
+      </div>
+    </div>
+    <div class="about-me">
+      <h4 class="section-title">O mnie</h4>
+      Sratatatata Sratatatata Sratatatata Sratatatata Sratatatata
+      Sratatatata Sratatatata Sratatatata Sratatatata Sratatatata
+      Sratatatata Sratatatata Sratatatata Sratatatata Sratatatata
     </div>
 
   </div>
   <div class="my-profile right-side">
+
   </div>
 </div>
 

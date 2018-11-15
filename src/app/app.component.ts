@@ -1,7 +1,10 @@
-import {Component, DoCheck, OnInit} from '@angular/core';
+
+import {filter} from 'rxjs/operators';
+import {Component, DoCheck, OnDestroy, OnInit} from '@angular/core';
 import {JwtStorageService} from './shared/storage/jwt-storage.service';
 import {Router, NavigationEnd } from '@angular/router';
-import 'rxjs/add/operator/filter';
+import {LoggedUserStorageService} from './shared/storage/logged-user-storage.service';
+
 
 
 @Component({
@@ -10,13 +13,15 @@ import 'rxjs/add/operator/filter';
   styleUrls: ['./app.component.scss']
 })
 
-export class AppComponent implements OnInit {
+export class AppComponent implements OnInit, OnDestroy {
   public hideElements: boolean;
-  constructor(private jwtService: JwtStorageService, private router: Router) {
+  constructor(private  jwtStorage: JwtStorageService,
+              private router: Router,
+              private loggedUserDataService: LoggedUserStorageService,) {
     const differentDisplayUrlList: string[] = [
       'login'
     ];
-    router.events.filter(event => event instanceof NavigationEnd)
+    router.events.pipe(filter(event => event instanceof NavigationEnd))
       .subscribe(() => {
         this.hideElements = Boolean(differentDisplayUrlList.find(element => router.url.substring(1).indexOf(element) > -1));
       });
@@ -24,5 +29,10 @@ export class AppComponent implements OnInit {
 
   ngOnInit() {
     // console.log(this.router.url.substring(1));
+  }
+
+  ngOnDestroy() {
+    this.jwtStorage.removeToken();
+    this.loggedUserDataService.removeUserData();
   }
 }

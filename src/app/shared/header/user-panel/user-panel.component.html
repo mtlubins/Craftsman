@@ -1,9 +1,6 @@
-<div *ngIf="userData; then login else loggedOut"></div>
+<ng-container *ngIf="userData; then login else loggedOut"></ng-container>
 <ng-template #login>
   <div class="button-group">
-
-
-
       <div class="btn-group" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
         <!--<span class="user-name">{{userData.firstName}} {{userData.lastName}}</span>-->
         <!--<button type="button" class="arrow dropdown-toggle dropdown-toggle-split"-->
@@ -11,7 +8,7 @@
           <!--<span class="sr-only">Toggle Dropdown</span>-->
         <!--</button>-->
         <button class="btn user-name" type="button">
-          {{userData.firstName}} {{userData.lastName}}
+          {{userData?.firstName}} {{userData?.lastName}}
         </button>
         <div class="dropdown-toggle dropdown-toggle-split">
         </div>
@@ -23,9 +20,7 @@
           <a class="dropdown-item" href="#">Separated link</a>
         </div>
       </div>
-
     <button class="button-transparent-white" (click)="logout()">Wyloguj się</button>
-
   </div>
 </ng-template>
 <ng-template #loggedOut>

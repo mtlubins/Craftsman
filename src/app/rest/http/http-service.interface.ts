@@ -1,4 +1,4 @@
-import {Observable} from 'rxjs/Observable';
+import {Observable} from 'rxjs';
 
 export interface IHttpService {
     request<T>(method: string, url: string, body?: any): Observable<T>;

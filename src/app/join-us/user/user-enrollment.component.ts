@@ -5,7 +5,8 @@ import {IUser} from '../../shared/models/user.interface';
 import {AccountResourceService} from '../../rest/resources/account-resource/account-resource.service';
 import {JwtStorageService} from '../../shared/storage/jwt-storage.service';
 import {Router} from '@angular/router';
-import {ToastsManager} from 'ng2-toastr';
+import {ToastsManager} from 'ng6-toastr';
+import {LoggedUserStorageService} from '../../shared/storage/logged-user-storage.service';
 
 @Component({
   selector: 'app-user-enrollment',
@@ -22,6 +23,7 @@ export class UserEnrollmentComponent {
               private  jwtStorage: JwtStorageService,
               private router: Router,
               private toastr: ToastsManager,
+              private loggedUserDataService: LoggedUserStorageService,
               vcr: ViewContainerRef) {
   this.toastr.setRootViewContainerRef(vcr);
     this.buildForm();
@@ -34,12 +36,21 @@ export class UserEnrollmentComponent {
       const userToCreate: IUser = Object.assign({}, passwordData, this.enrollmentForm.value, {craftsmen: false});
       this.accountService.createUser(userToCreate)
         .subscribe(
-          (response) => {
-            console.log(response);
-            this.jwtStorage.setToken(response.access_token);
-            this.router.navigateByUrl('/my-account');
+          (token) => {
+            this.jwtStorage.setToken(token.access_token);
+            this.accountService.getProfile()
+              .subscribe(
+                (userData) => {
+                  console.log('dane z auth');
+                  console.log(userData);
+                  this.loggedUserDataService.setUserData(userData);
+                  this.router.navigateByUrl('/my-account');
+                });
           },
-              (err) => this.toastr.error(err.userMessage, 'Oops!')
+              (err) => {
+            console.log(err);
+              this.toastr.error(err.userMessage, 'Oops!');
+              }
           );
     } else {
       this.toastr.error('This is not good lord! The form is broken :(', 'Oops!');

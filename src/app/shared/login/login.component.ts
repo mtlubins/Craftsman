@@ -5,7 +5,7 @@ import {IHttpError} from '../../rest/http/http-error.interface';
 import {ICustomerCredentials} from '../models/customer-credentials.interface';
 import {FieldValidationService} from '../field-validator/field-validation.service';
 import {Router} from '@angular/router';
-import {ToastsManager} from 'ng2-toastr';
+import {ToastsManager} from 'ng6-toastr';
 
 @Component({
   selector: 'app-login',

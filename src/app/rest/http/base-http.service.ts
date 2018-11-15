@@ -1,5 +1,5 @@
 import {IHttpService} from './http-service.interface';
-import {Observable} from 'rxjs/Observable';
+import {Observable} from 'rxjs';
 import {HttpClient, HttpErrorResponse, HttpHeaders} from '@angular/common/http';
 import {AuthConfig} from './auth-config.model';
 import {Injectable} from '@angular/core';

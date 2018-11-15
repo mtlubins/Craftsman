@@ -1,7 +1,7 @@
 import {Component, OnInit, ViewContainerRef} from '@angular/core';
 import {ActivatedRoute} from '@angular/router';
 import {AccountResourceService} from '../../../rest/resources/account-resource/account-resource.service';
-import {ToastsManager} from 'ng2-toastr';
+import {ToastsManager} from 'ng6-toastr';
 import {IHttpError} from '../../../rest/http/http-error.interface';
 
 @Component({
@@ -22,7 +22,6 @@ export class UserProfileComponent implements OnInit {
       response => this.userData = response,
       (err: IHttpError) => {
         this.toastr.error(err.userMessage, 'Ooops!');
-      }
-    );
+      });
   }
 }

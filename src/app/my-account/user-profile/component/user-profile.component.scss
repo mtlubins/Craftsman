@@ -11,7 +11,7 @@
     display: flex;
   }
   hr {
-    margin: 40px 0;
+    margin: 20px 0 20px 0;
     border: 0;
     height: 0;
     width: 50%;
@@ -23,6 +23,7 @@
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
+    border-right: 1px solid rgba(0, 0, 0, 0.1);
 
     .avatar-container {
       display: inline-block;
@@ -49,8 +50,16 @@
 
     .user-name {
       font-size: 24px;
-      font-weight: bold;
+      font-weight: 700;
       display: block;
+    }
+
+    .profile-item {
+      margin: 5px 0;
+    }
+
+    .about-me {
+      margin: 20px 0;
     }
   }
 }
